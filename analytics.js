@@ -78,7 +78,7 @@ const initDb = async () => {
   }
 
   // Dynamically import the libsql client
-  const { createClient } = await import('https://cdn.jsdelivr.net/npm/@libsql/client@0.6.0/+esm');
+  const { createClient } = await import('https://cdn.jsdelivr.net/npm/@libsql/client@latest/+esm');
 
   try {
     dbClient = createClient({
