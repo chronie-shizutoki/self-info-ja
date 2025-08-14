@@ -33,9 +33,9 @@ body::before {
         
     background-size: cover;
     background-position: center 20%;
-    background-attachment: fixed;
+    /* Remove fixed background attachment to prevent wallpaper from scrolling with the page */
+    background-attachment: scroll;
     filter: blur(8px); /* Slightly increase the blur to highlight the foreground */
-    
     /* Remove unnecessary styles, which will be applied to the content container */
     /* background-color, box-shadow, backdrop-filter, border-radius, border are all removed */
 }
