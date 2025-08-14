@@ -24,15 +24,6 @@ jobs:
         with:
           node-version: '16'
 
-      - name: Make replace-token.js executable
-        run: chmod +x replace-token.js
-
-      - name: Replace DB token placeholder
-        env:
-          DB_TOKEN: ${{ secrets.DB_TOKEN }}
-        run: |
-          node replace-token.js
-
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
