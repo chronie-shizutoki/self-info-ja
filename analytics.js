@@ -20,7 +20,7 @@ const getDbToken = () => {
 // Get the visitor's IP address
 const getVisitorIP = async () => {
   try {
-    const response = await fetch('https://api.ipify.org?format=json');
+    const response = await fetch('https://api64.ipify.org?format=json');
     const data = await response.json();
     return data.ip;
   } catch (error) {
@@ -29,17 +29,31 @@ const getVisitorIP = async () => {
   }
 };
 
-// Initialize the database connection
+// Database connection cache
+let dbClient = null;
+
+// Initialize the database connection with caching
 const initDb = async () => {
+  // If a connection already exists and is valid, return it directly
+  if (dbClient) {
+    console.log('Using existing database connection');
+    return dbClient;
+  }
+
   // Dynamically import the libsql client
   const { createClient } = await import('https://cdn.jsdelivr.net/npm/@libsql/client@0.6.0/+esm');
 
-  const client = createClient({
-    url: DB_URL,
-    authToken: getDbToken()
-  });
-
-  return client;
+  try {
+    dbClient = createClient({
+      url: DB_URL,
+      authToken: getDbToken()
+    });
+    console.log('Database connection initialized successfully');
+    return dbClient;
+  } catch (error) {
+    console.error('Failed to initialize database connection:', error);
+    throw error; // Rethrow the error for the upper layer to handle
+  }
 };
 
 // Create the visit record table if it doesn't exist
@@ -68,12 +82,13 @@ const recordVisit = async () => {
     const ip = await getVisitorIP();
     const userAgent = navigator.userAgent;
 
-    await client.execute({
+    // Try to execute the insert operation and get the result
+    const insertResult = await client.execute({
       sql: 'INSERT INTO visitor_stats (ip_address, user_agent) VALUES (:ip, :userAgent)',
       args: { ip, userAgent }
     });
 
-    console.log('Visit recorded successfully:', { ip, userAgent });
+    console.log('Visit recorded successfully:', { ip, userAgent, insertResult });
 
     // Get the total number of visits
     const result = await client.execute('SELECT COUNT(*) AS total_visits FROM visitor_stats');
@@ -83,6 +98,10 @@ const recordVisit = async () => {
     return totalVisits;
   } catch (error) {
     console.error('Failed to record visit:', error);
+    // Output detailed error information for debugging
+    if (error.code) console.error('Error code:', error.code);
+    if (error.message) console.error('Error message:', error.message);
+    if (error.stack) console.error('Error stack:', error.stack);
     return null;
   }
 };
