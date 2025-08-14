@@ -16,7 +16,7 @@ const getDbToken = () => {
 // Check network connectivity
 const checkNetworkConnectivity = async () => {
   try {
-    const response = await fetch('https://api64.ipify.org?format=json', { timeout: 5000 });
+    const response = await fetch('https://ipapi.co/json/', { timeout: 5000 });
     return response.ok;
   } catch (error) {
     console.error('Network connectivity check failed:', error);
@@ -24,15 +24,45 @@ const checkNetworkConnectivity = async () => {
   }
 };
 
-// Get the visitor's IP address
-const getVisitorIP = async () => {
+// Get detailed visitor IP information
+const getVisitorIPInfo = async () => {
   try {
-    const response = await fetch('https://api64.ipify.org?format=json', { timeout: 5000 });
+    const response = await fetch('https://ipapi.co/json/', { timeout: 5000 });
+    if (!response.ok) throw new Error(`HTTP ${response.status}`);
     const data = await response.json();
-    return data.ip;
+    return data;
   } catch (error) {
-    console.error('Failed to get IP address:', error);
-    return 'unknown';
+    console.error('Failed to get IP information:', error);
+    // Return a default object with minimal information
+    return {
+      ip: 'unknown',
+      network: 'unknown',
+      version: 'unknown',
+      city: 'unknown',
+      region: 'unknown',
+      region_code: 'unknown',
+      country: 'unknown',
+      country_name: 'unknown',
+      country_code: 'unknown',
+      country_code_iso3: 'unknown',
+      country_capital: 'unknown',
+      country_tld: 'unknown',
+      continent_code: 'unknown',
+      in_eu: false,
+      postal: 'unknown',
+      latitude: 0,
+      longitude: 0,
+      timezone: 'unknown',
+      utc_offset: 'unknown',
+      country_calling_code: 'unknown',
+      currency: 'unknown',
+      currency_name: 'unknown',
+      languages: 'unknown',
+      country_area: 0,
+      country_population: 0,
+      asn: 'unknown',
+      org: 'unknown'
+    };
   }
 };
 
@@ -70,6 +100,32 @@ const createTable = async (client) => {
       CREATE TABLE IF NOT EXISTS visitor_stats (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         ip_address TEXT NOT NULL,
+        network TEXT,
+        version TEXT,
+        city TEXT,
+        region TEXT,
+        region_code TEXT,
+        country TEXT,
+        country_name TEXT,
+        country_code TEXT,
+        country_code_iso3 TEXT,
+        country_capital TEXT,
+        country_tld TEXT,
+        continent_code TEXT,
+        in_eu BOOLEAN,
+        postal TEXT,
+        latitude REAL,
+        longitude REAL,
+        timezone TEXT,
+        utc_offset TEXT,
+        country_calling_code TEXT,
+        currency TEXT,
+        currency_name TEXT,
+        languages TEXT,
+        country_area REAL,
+        country_population INTEGER,
+        asn TEXT,
+        org TEXT,
         visit_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
         user_agent TEXT
       )
@@ -93,16 +149,29 @@ const recordVisit = async (retryCount = 0, maxRetries = 3) => {
     const client = await initDb();
     await createTable(client);
 
-    const ip = await getVisitorIP();
+    const ipInfo = await getVisitorIPInfo();
     const userAgent = navigator.userAgent;
 
     // Try to execute the insert operation and get the result
     const insertResult = await client.execute({
-      sql: 'INSERT INTO visitor_stats (ip_address, user_agent) VALUES (:ip, :userAgent)',
-      args: { ip, userAgent }
+      sql: `INSERT INTO visitor_stats (
+        ip_address, network, version, city, region, region_code, country, country_name, country_code, 
+        country_code_iso3, country_capital, country_tld, continent_code, in_eu, postal, latitude, 
+        longitude, timezone, utc_offset, country_calling_code, currency, currency_name, languages, 
+        country_area, country_population, asn, org, user_agent
+      ) VALUES (
+        :ip, :network, :version, :city, :region, :region_code, :country, :country_name, :country_code, 
+        :country_code_iso3, :country_capital, :country_tld, :continent_code, :in_eu, :postal, :latitude, 
+        :longitude, :timezone, :utc_offset, :country_calling_code, :currency, :currency_name, :languages, 
+        :country_area, :country_population, :asn, :org, :userAgent
+      )`,
+      args: {
+        ...ipInfo,
+        userAgent
+      }
     });
 
-    console.log('Visit recorded successfully:', { ip, userAgent, insertResult });
+    console.log('Visit recorded successfully:', { ipInfo, userAgent, insertResult });
 
     // Get the total number of visits
     const result = await client.execute('SELECT COUNT(*) AS total_visits FROM visitor_stats');
@@ -145,4 +214,4 @@ document.addEventListener('DOMContentLoaded', async () => {
   }
 });
 
-export { recordVisit };
+export { recordVisit, getVisitorIPInfo };
