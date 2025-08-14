@@ -1,26 +1,26 @@
 /*
- * Optimized Glass Style - Apple Human Interface Guidelines Inspired
+ * Optimized Glass Style - Inspired by Apple Human Interface Guidelines
  */
 .glass-container-apple {
     position: relative;
-    overflow: hidden; /* 关键：确保伪元素不会溢出容器 */
-    border-radius: 24px; /* 采用更圆润的 iOS 风格圆角 */
+    overflow: hidden; /* Key: Ensure pseudo-elements don't overflow the container */
+    border-radius: 24px; /* Adopt rounder iOS-style rounded corners */
     padding: 20px;
     margin-bottom: 20px;
     
-    /* 1. 背景模糊 - 核心玻璃质感 */
-    background: rgba(255, 255, 255, 0.15); /* 降低不透明度，让模糊效果更突出 */
+    /* 1. Background Blur - Core Glass Texture */
+    background: rgba(255, 255, 255, 0.15); /* Reduce opacity to make the blur effect more prominent */
     backdrop-filter: blur(25px) saturate(180%);
     -webkit-backdrop-filter: blur(25px) saturate(180%);
 
-    /* 2. 精致的边框和阴影 */
-    /* 使用 inset box-shadow 模拟高光边框，比 border 更柔和 */
+    /* 2. Exquisite Borders and Shadows */
+    /* Use inset box-shadow to simulate a highlight border, softer than border */
     box-shadow: 
-        inset 0 0 0 1px rgba(255, 255, 255, 0.2), /* 内部1px高光边框 */
-        0 8px 32px rgba(0, 0, 0, 0.2); /* 更柔和、自然的外部阴影 */
+        inset 0 0 0 1px rgba(255, 255, 255, 0.2), /* 1px internal highlight border */
+        0 8px 32px rgba(0, 0, 0, 0.2); /* Softer and more natural external shadow */
 }
 
-/* 3. 动态光晕效果 - 模拟环境光 */
+/* 3. Dynamic Halo Effect - Simulate Ambient Light */
 .glass-container-apple::before {
     content: '';
     position: absolute;
@@ -29,24 +29,24 @@
     width: 200%;
     height: 200%;
     
-    /* 创建一个柔和的、模糊的径向渐变作为光源 */
+    /* Create a soft, blurred radial gradient as the light source */
     background: radial-gradient(circle at 25% 25%, rgba(100, 150, 255, 0.2), transparent 40%);
     
-    /* 动画：让光晕缓慢、平滑地移动 */
+    /* Animation: Make the halo move slowly and smoothly */
     animation: aurora-glow 20s ease-in-out infinite;
     transform-origin: center center;
 }
 
-/* 4. 材质噪点 - 增加真实感 (可选，但效果拔群) */
+/* 4. Material Noise - Enhance Realism (Optional but Highly Effective) */
 .glass-container-apple::after {
     content: '';
     position: absolute;
     inset: 0;
     
-    /* 使用 SVG 过滤器或平铺图像创建噪点纹理 */
+    /* Use SVG filter or tiled image to create noise texture */
     background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.75" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(%23n)" opacity="0.05"/></svg>');
     
-    pointer-events: none; /* 确保噪点层不会干扰鼠标事件 */
+    pointer-events: none; /* Ensure the noise layer doesn't interfere with mouse events */
 }
 
 

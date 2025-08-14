@@ -1,74 +1,76 @@
+/* Import font (keep unchanged) */
 @font-face {
     font-family: 'KleeOne-Regular';
     src: url('fonts/KleeOne-Regular.woff2') format('woff2');
     font-weight: normal;
     font-style: normal;
 }
-body::before {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-image: url('background.jpeg');   
-    background-size: cover;
-    background-position: center 20%;
-    background-attachment: scroll;
-    filter: blur(5px);
-    z-index: -1;
-    background-color: rgba(255, 255, 255, 0.3);
-    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
-    backdrop-filter: blur( 4px );
-    -webkit-backdrop-filter: blur( 4px );
-    border-radius: 10px;
-    border: 1px solid rgba( 255, 255, 255, 0.18 );
-    }
+
+/* 1. Basic and Background Settings */
 body {
+    margin: 0; /* Remove the default margin of the body */
     font-family: 'KleeOne-Regular', sans-serif;
     line-height: 1.6;
+    user-select: none;
+    /* Provide some vertical space for the content container */
+    padding: 60px 20px; 
+    width: 70%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Background layer: only responsible for providing a blurred background image */
+body::before {
+    content: '';
+    position: fixed; /* Fixed on the viewport */
+    inset: 0; /* Equivalent to top/right/bottom/left: 0 */
+    z-index: -1; /* Placed at the bottom layer */
+
+    /* Add a semi-transparent black mask to ensure light text is clearly readable */
+    background: 
+        linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+        url('background.jpeg');
+        
+    background-size: cover;
+    background-position: center 20%;
+    background-attachment: fixed;
+    filter: blur(8px); /* Slightly increase the blur to highlight the foreground */
+    
+    /* Remove unnecessary styles, which will be applied to the content container */
+    /* background-color, box-shadow, backdrop-filter, border-radius, border are all removed */
+}
+
+/* 2. Content Glass Container */
+.content-wrapper {
     width: 75%;
     max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-    user-select: none;
+    margin: 0 auto; /* Center */
+    padding: 30px; /* Increase padding to let the text breathe */
+
+    /* Apply the previously optimized Apple-style glass effect */
+    position: relative;
+    overflow: hidden;
+    border-radius: 24px;
+    background: rgba(255, 255, 255, 0.1); /* Lower transparency for a more textured look */
+    backdrop-filter: blur(20px) saturate(150%);
+    -webkit-backdrop-filter: blur(20px) saturate(150%);
+    box-shadow: 
+        inset 0 0 0 1px rgba(255, 255, 255, 0.2), /* Inner highlight border */
+        0 8px 32px rgba(0, 0, 0, 0.25); /* Soft outer shadow */
 }
-/* Beautify the scrollbar with cherry blossom pink */
-/* Note: On Android and iOS, scrollbar customization is limited by system settings. 
-These styles work on desktop browsers and some mobile browsers. */
-/* For Safari, Chrome, and other WebKit-based browsers */
+
+/* 3. Scrollbar Style Fine-tuning (Suggestion) */
+/* Hide scrollbar but keep scrolling functionality */
 html::-webkit-scrollbar {
-    width: 7px;
-    height: 7px;
+    display: none;
 }
 
-html::-webkit-scrollbar-track {
-    background: rgba(255, 255, 255, 0.3);
-    border-radius: 10px;
-}
-
-html::-webkit-scrollbar-thumb {
-    background-color: #ffb6c1; /* Cherry blossom pink */
-    border-radius: 10px;
-    border: 2px solid rgba(255, 255, 255, 0.3);
-}
-/* Safari specific adjustments */
-html::-webkit-scrollbar-thumb:hover {
-    background-color: #ff99b3; /* Darker cherry blossom pink on hover */
-}
-/* For Safari 14+, ensure scrollbar is visible */
-@supports (-webkit-overflow-scrolling: touch) {
-    html {
-        scrollbar-width: thin;
-        scrollbar-color: #ffb6c1 rgba(255, 255, 255, 0.3);
-    }
-}
-/* For Firefox */
 html {
-    scrollbar-width: thin;
-    scrollbar-color: #ffb6c1 rgba(255, 255, 255, 0.3);
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
 }
-/* Add smooth scrolling for better mobile experience */
+
+/* 4. Smooth Scrolling and Content Styles (keep unchanged) */
 html {
     scroll-behavior: smooth;
 }
