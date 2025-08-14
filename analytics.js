@@ -74,15 +74,28 @@ document.addEventListener('DOMContentLoaded', async () => {
   // 加载GA
   loadGoogleAnalytics();
 
-  // 延迟执行，确保GA已加载
-  setTimeout(async () => {
-    const visitRecorded = recordVisit();
-    if (visitRecorded) {
-      // 可选：获取并记录IP信息
-      const ipInfo = await getVisitorIPInfo();
-      console.log('Visitor IP info:', ipInfo);
+  // 使用轮询方式检测GA是否已初始化，最多等待5秒
+  let attempts = 0;
+  const maxAttempts = 50; // 5秒 (50 * 100ms)
+  const intervalId = setInterval(async () => {
+    attempts++;
+    
+    if (window.gtag || attempts >= maxAttempts) {
+      clearInterval(intervalId);
+      
+      if (window.gtag) {
+        console.log('Google Analytics is initialized');
+        const visitRecorded = recordVisit();
+        if (visitRecorded) {
+          // 获取并记录IP信息
+          const ipInfo = await getVisitorIPInfo();
+          console.log('Visitor IP info:', ipInfo);
+        }
+      } else {
+        console.error('Google Analytics failed to initialize after 5 seconds');
+      }
     }
-  }, 1000);
+  }, 100); // 每100ms检查一次
 });
 
 export { recordVisit, getVisitorIPInfo };
