@@ -5,7 +5,7 @@ export class SakuraEffect {
         this.petals = [];
         this.MAX = 100;
         this.petalImage = new Image();
-        this.petalImage.src = "sakura.svg";
+        this.petalImage.src = "anime/sakura.svg";
         
         this.resize();
         window.addEventListener('resize', () => this.resize());
