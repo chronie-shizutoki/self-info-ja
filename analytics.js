@@ -8,19 +8,26 @@ const DB_URL = 'libsql://self-info-ja-chronie-shizutoki.aws-ap-northeast-1.turso
 // For GitHub Pages deployment, we'll use a different approach to get the token
 // This function will be replaced during the build process with the actual token
 const getDbToken = () => {
-  // Check if we're in a development environment
-  if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
-    return localStorage.getItem('DB_TOKEN') || 'YOUR_DEFAULT_TOKEN';
-  }
   // For production (GitHub Pages), the token will be injected during build
   // This placeholder will be replaced by the actual token
   return 'DB_TOKEN_PLACEHOLDER';
 };
 
+// Check network connectivity
+const checkNetworkConnectivity = async () => {
+  try {
+    const response = await fetch('https://api64.ipify.org?format=json', { timeout: 5000 });
+    return response.ok;
+  } catch (error) {
+    console.error('Network connectivity check failed:', error);
+    return false;
+  }
+};
+
 // Get the visitor's IP address
 const getVisitorIP = async () => {
   try {
-    const response = await fetch('https://api64.ipify.org?format=json');
+    const response = await fetch('https://api64.ipify.org?format=json', { timeout: 5000 });
     const data = await response.json();
     return data.ip;
   } catch (error) {
@@ -73,9 +80,16 @@ const createTable = async (client) => {
   }
 };
 
-// Record visit information
-const recordVisit = async () => {
+// Record visit information with retry mechanism
+const recordVisit = async (retryCount = 0, maxRetries = 3) => {
   try {
+    // Check network connectivity first
+    const isOnline = await checkNetworkConnectivity();
+    if (!isOnline) {
+      console.warn('No network connection. Cannot record visit at this time.');
+      return null;
+    }
+
     const client = await initDb();
     await createTable(client);
 
@@ -97,11 +111,23 @@ const recordVisit = async () => {
 
     return totalVisits;
   } catch (error) {
-    console.error('Failed to record visit:', error);
+    console.error('Failed to record visit (attempt ' + (retryCount + 1) + '):', error);
     // Output detailed error information for debugging
     if (error.code) console.error('Error code:', error.code);
     if (error.message) console.error('Error message:', error.message);
     if (error.stack) console.error('Error stack:', error.stack);
+
+    // Retry if we haven't reached max retries and the error is likely temporary
+    if (retryCount < maxRetries && 
+        (error.message.includes('Failed to fetch') || 
+         error.message.includes('NetworkError') || 
+         error.message.includes('timeout'))) {
+      console.log('Retrying visit recording (attempt ' + (retryCount + 2) + ')...');
+      // Wait 1 second before retrying
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      return recordVisit(retryCount + 1, maxRetries);
+    }
+
     return null;
   }
 };
