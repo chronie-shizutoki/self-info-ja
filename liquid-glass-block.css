@@ -1,0 +1,69 @@
+/*
+ * Optimized Glass Style - Apple Human Interface Guidelines Inspired
+ */
+.glass-container-apple {
+    position: relative;
+    overflow: hidden; /* 关键：确保伪元素不会溢出容器 */
+    border-radius: 24px; /* 采用更圆润的 iOS 风格圆角 */
+    padding: 20px;
+    margin-bottom: 20px;
+    
+    /* 1. 背景模糊 - 核心玻璃质感 */
+    background: rgba(255, 255, 255, 0.15); /* 降低不透明度，让模糊效果更突出 */
+    backdrop-filter: blur(25px) saturate(180%);
+    -webkit-backdrop-filter: blur(25px) saturate(180%);
+
+    /* 2. 精致的边框和阴影 */
+    /* 使用 inset box-shadow 模拟高光边框，比 border 更柔和 */
+    box-shadow: 
+        inset 0 0 0 1px rgba(255, 255, 255, 0.2), /* 内部1px高光边框 */
+        0 8px 32px rgba(0, 0, 0, 0.2); /* 更柔和、自然的外部阴影 */
+}
+
+/* 3. 动态光晕效果 - 模拟环境光 */
+.glass-container-apple::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200%;
+    height: 200%;
+    
+    /* 创建一个柔和的、模糊的径向渐变作为光源 */
+    background: radial-gradient(circle at 25% 25%, rgba(100, 150, 255, 0.2), transparent 40%);
+    
+    /* 动画：让光晕缓慢、平滑地移动 */
+    animation: aurora-glow 20s ease-in-out infinite;
+    transform-origin: center center;
+}
+
+/* 4. 材质噪点 - 增加真实感 (可选，但效果拔群) */
+.glass-container-apple::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    
+    /* 使用 SVG 过滤器或平铺图像创建噪点纹理 */
+    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.75" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(%23n)" opacity="0.05"/></svg>');
+    
+    pointer-events: none; /* 确保噪点层不会干扰鼠标事件 */
+}
+
+
+@keyframes aurora-glow {
+    0% {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+    25% {
+        transform: translate(0%, -50%) rotate(90deg) scale(0.9);
+    }
+    50% {
+        transform: translate(0%, 0%) rotate(180deg) scale(1.1);
+    }
+    75% {
+        transform: translate(-50%, 0%) rotate(270deg) scale(0.95);
+    }
+    100% {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
