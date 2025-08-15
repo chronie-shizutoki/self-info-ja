@@ -3,227 +3,471 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>プライバシー同意書</title>
+    <title>Google Analytics利用に関するプライバシー同意書</title>
     <style>
+        :root {
+            --primary: #1a73e8;
+            --primary-dark: #0d62d9;
+            --secondary: #34a853;
+            --warning: #f9ab00;
+            --danger: #ea4335;
+            --light-bg: #f8f9fa;
+            --dark-text: #202124;
+            --border: #dadce0;
+            --shadow: rgba(60, 64, 67, 0.15);
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
         body {
-            font-family: 'Helvetica Neue', Arial, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            max-width: 800px;
+            font-family: 'Noto Sans JP', 'Segoe UI', 'Hiragino Sans', 'Hiragino Kaku Gothic Pro', 'Yu Gothic', sans-serif;
+            line-height: 1.7;
+            color: var(--dark-text);
+            background-color: #f0f4f8;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 900px;
             margin: 0 auto;
-            padding: 20px;
-            background-color: #f9f9f9;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px var(--shadow);
         }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            padding: 30px 40px;
+            text-align: center;
+        }
+        
         h1 {
-            color: #2c3e50;
-            text-align: center;
-            margin-bottom: 30px;
-            padding-bottom: 15px;
-            border-bottom: 2px solid #3498db;
-        }
-        h2 {
-            color: #2c3e50;
-            margin-top: 30px;
-            margin-bottom: 15px;
-            padding-left: 10px;
-            border-left: 4px solid #3498db;
-        }
-        .subtitle {
-            text-align: center;
-            font-size: 1.1em;
-            color: #7f8c8d;
-            margin-bottom: 30px;
-        }
-        .effective-date {
-            text-align: right;
-            margin-bottom: 30px;
-            font-style: italic;
-        }
-        .section {
-            background-color: white;
-            padding: 20px;
-            margin-bottom: 25px;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-        ul {
-            padding-left: 20px;
-            margin-bottom: 15px;
-        }
-        li {
+            font-size: 28px;
             margin-bottom: 8px;
+            font-weight: 600;
         }
-        .horizontal-line {
-            border-top: 1px solid #e0e0e0;
-            margin: 30px 0;
+        
+        .subtitle {
+            font-size: 18px;
+            opacity: 0.9;
+            margin-bottom: 20px;
         }
+        
+        .meta-info {
+            display: flex;
+            justify-content: space-between;
+            background: #e8f0fe;
+            padding: 15px 30px;
+            color: var(--primary-dark);
+            font-size: 14px;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .content {
+            padding: 30px 40px;
+        }
+        
+        h2 {
+            color: var(--primary-dark);
+            margin: 35px 0 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--border);
+            font-size: 22px;
+        }
+        
+        h3 {
+            color: var(--primary);
+            margin: 25px 0 15px;
+            font-size: 18px;
+        }
+        
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+        
+        ul, ol {
+            margin: 0 0 20px 25px;
+        }
+        
+        li {
+            margin-bottom: 10px;
+            position: relative;
+            padding-left: 20px;
+        }
+        
+        li:before {
+            content: "•";
+            color: var(--primary);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+        
         table {
             width: 100%;
             border-collapse: collapse;
             margin: 20px 0;
+            box-shadow: 0 1px 3px var(--shadow);
         }
-        th, td {
-            padding: 12px 15px;
-            text-align: left;
-            border-bottom: 1px solid #e0e0e0;
-        }
+        
         th {
-            background-color: #f2f2f2;
-            font-weight: bold;
+            background-color: #e8f0fe;
+            color: var(--primary-dark);
+            font-weight: 600;
+            text-align: left;
         }
-        .important-notice {
-            background-color: #fff3cd;
-            border-left: 4px solid #ffc107;
+        
+        th, td {
             padding: 15px;
-            margin: 20px 0;
-            border-radius: 0 4px 4px 0;
+            border: 1px solid var(--border);
         }
+        
+        tr:nth-child(even) {
+            background-color: var(--light-bg);
+        }
+        
+        .notice-box {
+            background-color: #fff8e1;
+            border-left: 5px solid var(--warning);
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .legal-ref {
+            font-size: 14px;
+            color: #5f6368;
+            margin-top: 5px;
+            font-style: italic;
+        }
+        
         .consent-section {
-            margin-top: 40px;
-            padding: 25px;
-            background-color: #e8f4fd;
-            border-radius: 8px;
+            background: #e8f5e9;
+            border-radius: 10px;
+            padding: 30px;
+            margin: 40px 0;
+            border: 1px solid #c8e6c9;
         }
-        .consent-text {
-            font-size: 1.1em;
-            margin-bottom: 20px;
-            line-height: 1.8;
+        
+        .consent-title {
+            text-align: center;
+            color: var(--secondary);
+            margin-bottom: 25px;
+            font-size: 22px;
+            font-weight: 600;
         }
-        .consent-signature {
-            margin-top: 30px;
+        
+        .consent-options {
             display: flex;
-            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 25px;
         }
-        .signature-line {
-            width: 45%;
-            border-bottom: 1px solid #333;
-            padding-top: 5px;
+        
+        .consent-option {
+            flex: 1;
+            min-width: 250px;
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 6px var(--shadow);
         }
-        .process-flow {
-            margin: 20px 0;
-            padding-left: 20px;
+        
+        .consent-option h4 {
+            margin-bottom: 15px;
+            color: var(--primary-dark);
         }
-        .flow-step {
-            margin-bottom: 10px;
+        
+        .toggle-container {
+            display: flex;
+            align-items: center;
+            margin-top: 15px;
+        }
+        
+        .toggle-label {
+            margin-right: 15px;
+            font-weight: 500;
+        }
+        
+        .switch {
             position: relative;
-            padding-left: 25px;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
         }
-        .flow-step::before {
-            content: '→';
+        
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        
+        .slider {
             position: absolute;
+            cursor: pointer;
+            top: 0;
             left: 0;
-            color: #3498db;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 34px;
+        }
+        
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+        
+        input:checked + .slider {
+            background-color: var(--secondary);
+        }
+        
+        input:checked + .slider:before {
+            transform: translateX(26px);
+        }
+        
+        .btn-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        button {
+            padding: 14px 35px;
+            font-size: 16px;
+            font-weight: 500;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(26, 115, 232, 0.3);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            border: 1px solid var(--primary);
+            color: var(--primary);
+        }
+        
+        .btn-outline:hover {
+            background-color: #e8f0fe;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 25px;
+            background: var(--light-bg);
+            color: #5f6368;
+            font-size: 14px;
+            border-top: 1px solid var(--border);
+        }
+        
+        @media (max-width: 768px) {
+            .content {
+                padding: 20px;
+            }
+            
+            header {
+                padding: 25px 20px;
+            }
+            
+            .meta-info {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .consent-options {
+                flex-direction: column;
+            }
+            
+            .btn-container {
+                flex-direction: column;
+            }
+            
+            button {
+                width: 100%;
+            }
         }
     </style>
 </head>
 <body>
-    <h1>プライバシー同意書</h1>
-    <div class="subtitle">Googleシグナルデータ収集に関する同意</div>
-    <div class="effective-date">適用開始日：2025年8月15日</div>
-
-    <div class="section">
-        <h2>第1条 収集するデータの種類</h2>
-        <p>本サービスはGoogleシグナルデータ収集機能を利用し、以下を収集します：</p>
-        <ul>
-            <li><strong>ユーザー提供データ</strong>：アカウント登録情報、設定選択</li>
-            <li><strong>自動収集データ</strong>：
-                <ul>
-                    <li>ユーザーID（暗号化識別子）</li>
-                    <li>精密位置情報（GPS/WiFi、精度5m以内）</li>
-                    <li>デバイスデータ：端末ID、OSバージョン、ネットワーク情報</li>
-                    <li>行動データ：機能利用頻度、クリックイベント</li>
-                </ul>
-            </li>
-        </ul>
-    </div>
-
-    <div class="section">
-        <h2>第2条 利用目的</h2>
-        <table>
-            <tr>
-                <th>データ種類</th>
-                <th>利用目的</th>
-                <th>法的根拠</th>
-            </tr>
-            <tr>
-                <td>ユーザーID</td>
-                <td>個人に紐づくサービス提供</td>
-                <td>契約履行</td>
-            </tr>
-            <tr>
-                <td>位置情報</td>
-                <td>地域限定機能の提供</td>
-                <td>明示的同意</td>
-            </tr>
-            <tr>
-                <td>デバイスデータ</td>
-                <td>障害分析・UI最適化</td>
-                <td>正当利益</td>
-            </tr>
-        </table>
-    </div>
-
-    <div class="section">
-        <h2>第3条 第三者提供</h2>
-        <p>収集データは以下と共有されます：</p>
-        <ol>
-            <li>Google LLC（データ処理委託先）
-                <ul>
-                    <li>本社：米国カリフォルニア州</li>
-                    <li>適用手法：標準契約条項（SCCs）</li>
-                </ul>
-            </li>
-            <li>広告測定パートナー
-                <ul>
-                    <li>匿名化済みデータに限定</li>
-                </ul>
-            </li>
-        </ol>
-    </div>
-
-    <div class="section">
-        <h2>第4条 データ保護措置</h2>
-        <ul>
-            <li>暗号化：転送時（TLS 1.3）/ 保存時（AES-256）</li>
-            <li>匿名化：位置データは収集後14日以内に集約化</li>
-            <li>保存期間：利用終了後14ヶ月以内消去</li>
-        </ul>
-    </div>
-
-    <div class="section">
-        <h2>第5条 ユーザー権利</h2>
-        <p>日本居住者は以下を要求可能：</p>
-        <ul>
-            <li>利用停止請求（APPI第30条）</li>
-            <li>開示・訂正請求（APPI第32条）</li>
-            <li>第三者提供停止請求（APPI第27条）</li>
-        </ul>
-        <p>▶ 請求方法：<a href="mailto:quiettimejsg@gmail.com">quiettimejsg@gmail.com</a> までメール</p>
-    </div>
-
-    <div class="section">
-        <h2>第6条 同意の管理</h2>
-        <div class="process-flow">
-            <div class="flow-step">初回起動</div>
-            <div class="flow-step">同意画面表示</div>
-            <div class="flow-step">同意 → データ収集開始</div>
-            <div class="flow-step">不同意 → 基本機能のみ提供</div>
+    <div class="container">
+        <header>
+            <h1>Google Analytics利用に関するプライバシー同意書</h1>
+            <div class="subtitle">個人情報保護法（APPI）準拠のデータ収集について</div>
+        </header>
+        
+        <div class="meta-info">
+            <div>制定日: 2025年8月15日</div>
+            <div>最終更新: 2025年8月15日</div>
+            <div>バージョン: 1.0</div>
         </div>
-        <p>設定画面で随時変更可能</p>
-    </div>
-
-    <div class="important-notice">
-        <strong>重要告知</strong><br>
-        精密位置情報の収集は本サービスの必須機能ではありません。
-    </div>
-
-    <div class="consent-section">
-        <h2>〈同意確認〉</h2>
-        <div class="consent-text">
-            私は上記内容を理解し、特に「精密位置情報」の収集について自由意思により同意します。
+        
+        <div class="content">
+            <h2>基本方針</h2>
+            <p>当サービスは、Google Analyticsを利用するにあたり、日本の個人情報保護法（以下「APPI」）及び関連法令を遵守します。本同意書は、Google Analyticsを通じて収集する情報の種類、利用目的、管理方法について説明し、ユーザーの明確な同意を得ることを目的としています。</p>
+            
+            <div class="notice-box">
+                <strong>重要なお知らせ:</strong> 当サービスは広告目的の追跡を行わないGoogle Analytics設定を採用しています。収集データはサービス改善のみに利用され、個人を特定する目的では使用しません。
+            </div>
+            
+            <h2>第1条 収集するデータの種類</h2>
+            <p>当サービスで利用するGoogle Analyticsは以下のデータを収集します:</p>
+            
+            <h3>A. 個人関連情報</h3>
+            <ul>
+                <li><strong>ユーザー識別子</strong>: ランダムに生成された匿名ID（個人を直接特定できない形式）</li>
+                <li><strong>デバイス情報</strong>: 端末タイプ、OSバージョン、ブラウザ種類</li>
+                <li><strong>ネットワーク情報</strong>: IPアドレス（匿名化処理済み）、ネットワークプロバイダー</li>
+            </ul>
+            
+            <h3>B. 行動データ</h3>
+            <ul>
+                <li><strong>利用状況</strong>: ページビュー数、セッション時間、離脱率</li>
+                <li><strong>操作データ</strong>: クリックイベント、スクロール深度、インタラクション時間</li>
+                <li><strong>参照元</strong>: アクセス元サイト・プラットフォーム（個人を特定しない集計レベル）</li>
+            </ul>
+            
+            <h3>C. 位置情報</h3>
+            <ul>
+                <li><strong>地域データ</strong>: 国、都道府県レベルの位置情報（GPSデータではなくIPアドレスから推測）</li>
+                <li><strong>精密位置情報</strong>: 特定機能利用時に限り収集（利用前に別途同意取得）</li>
+            </ul>
+            
+            <h2>第2条 データ利用目的</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>データ種類</th>
+                        <th>利用目的</th>
+                        <th>法的根拠</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>ユーザー識別子</td>
+                        <td>ユーザー体験の継続性提供（例：設定保存）</td>
+                        <td>契約履行（APPI第23条1項1号）</td>
+                    </tr>
+                    <tr>
+                        <td>デバイス情報</td>
+                        <td>端末最適化、障害分析</td>
+                        <td>正当な利益（APPI第23条1項3号）</td>
+                    </tr>
+                    <tr>
+                        <td>利用状況データ</td>
+                        <td>サービス改善、新機能開発</td>
+                        <td>明示的同意（APPI第23条1項4号）</td>
+                    </tr>
+                    <tr>
+                        <td>地域データ</td>
+                        <td>地域別利用傾向分析</td>
+                        <td>明示的同意（APPI第23条1項4号）</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <h2>第3条 データの第三者提供</h2>
+            <p>収集データは以下の場合を除き第三者に提供されません:</p>
+            <ul>
+                <li><strong>Google LLC</strong>: データ処理委託先として、当社との間でAPPI第28条に基づく委託契約を締結</li>
+                <li><strong>法的要請時</strong>: 法的手続きに基づく要請がある場合</li>
+            </ul>
+            
+            <div class="notice-box">
+                <strong>国際データ転送に関する注意:</strong> Googleへのデータ提供は、個人情報保護委員会が認定する十分性認定（APPI第28条）及び標準契約条項（SCCs）に基づいて行われます。
+            </div>
+            
+            <h2>第4条 データ保護措置</h2>
+            <ul>
+                <li><strong>匿名化</strong>: IPアドレスに基づく地域推測情報のみを記録し</li>
+                <li><strong>暗号化</strong>: 転送時(TLS 1.3以上)、保存時(AES-256)</li>
+                <li><strong>保存期間</strong>: 最大14ヶ月（ユーザーが削除要求した場合は即時削除）</li>
+                <li><strong>アクセス制限</strong>: データアクセスは最小権限の原則に基づく</li>
+            </ul>
+            
+            <h2>第5条 ユーザーの権利</h2>
+            <p>日本居住者は以下の権利を行使できます（APPI第3章）:</p>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>権利</th>
+                        <th>内容</th>
+                        <th>行使方法</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>開示請求</td>
+                        <td>保有個人データの開示</td>
+                        <td>問い合わせ窓口へ請求</td>
+                    </tr>
+                    <tr>
+                        <td>訂正請求</td>
+                        <td>内容訂正・追加・削除</td>
+                        <td>同上</td>
+                    </tr>
+                    <tr>
+                        <td>利用停止</td>
+                        <td>収集・利用・提供の停止</td>
+                        <td>設定画面または問い合わせ</td>
+                    </tr>
+                    <tr>
+                        <td>消去請求</td>
+                        <td>データの完全消去</td>
+                        <td>問い合わせ窓口へ請求</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <p>権利行使窓口: <a href="mailto:quiettimejsg@gmail.com">quiettimejsg@gmail.com</a></p>
+            
+            <div class="notice-box">
+                <strong>重要:</strong> データ消去要求はGoogle Analytics上で処理されますが、バックアップシステムから完全に削除されるまで最大30日を要します（APPI第33条）。
+            </div>
+            
+            <h2>第6条 同意管理プロセス</h2>
+            <ol>
+                <li>初回アクセス時に本同意書を提示</li>
+                <li>同意撤回時は直ちにデータ収集を停止</li>
+            </ol>
+                    </div>
+                </div>
+            </div>
         </div>
-        </div>
-    </div>
+        
+        <footer>
+            <p>© 2025 静時（しずとき）ねこたん | 個人情報保護方針</p>
+            <p>お問い合わせ: quiettimejsg@gmail.com</p>
 
+        </footer>
+    </div>
 </body>
 </html>
