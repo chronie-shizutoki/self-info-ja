@@ -75,6 +75,96 @@
     animation: fade-in-up 0.6s ease-out 0.2s forwards; /* Execute with a 0.2s delay */
 }
 
+/* 5. Privacy Popup Styles */
+.privacy-title {
+    font-size: 1.5rem;
+    color: #ff69b4;
+    margin-bottom: 1rem;
+    position: relative;
+    z-index: 1;
+    opacity: 0;
+    animation: fade-in-up 0.6s ease-out 0.1s forwards;
+}
+
+.privacy-text {
+    font-size: 1rem;
+    color: #f9cbff;
+    margin-bottom: 0.8rem;
+    line-height: 1.4;
+    position: relative;
+    z-index: 1;
+    opacity: 0;
+    animation: fade-in-up 0.6s ease-out 0.2s forwards;
+}
+
+.privacy-links {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin: 1.5rem 0;
+    position: relative;
+    z-index: 1;
+    opacity: 0;
+    animation: fade-in-up 0.6s ease-out 0.3s forwards;
+}
+
+.privacy-link {
+    color: #ffb6c1;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.privacy-link:hover {
+    color: #ff69b4;
+    text-decoration: underline;
+}
+
+.privacy-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1.5rem;
+    position: relative;
+    z-index: 1;
+    opacity: 0;
+    animation: fade-in-up 0.6s ease-out 0.4s forwards;
+}
+
+.consent-button {
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 30px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.consent-button.accept {
+    background: rgba(255, 105, 180, 0.7);
+    color: white;
+    box-shadow: 0 4px 15px rgba(255, 105, 180, 0.4);
+}
+
+.consent-button.accept:hover {
+    background: rgba(255, 105, 180, 0.9);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 105, 180, 0.6);
+}
+
+.consent-button.reject {
+    background: rgba(255, 255, 255, 0.2);
+    color: #f9cbff;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.consent-button.reject:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
 /* 5. Animation Keyframes */
 
 /* Remain unchanged: Rotation animation */

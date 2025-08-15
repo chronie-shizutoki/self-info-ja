@@ -1,17 +1,25 @@
 /**
- * Manages the splash screen's display and dismissal logic.
- * Ensures a smooth transition and optimal user experience.
+/*
+ * Manages the privacy consent popup display and user interactions.
+ * Handles user consent and ensures compliance with privacy regulations.
  */
-class SplashScreen {
-    // ✨ NEW: Configuration is moved to the top for easy changes.
-    MIN_DISPLAY_TIME = 1500; // Minimum time in ms to display the splash screen.
-
+class PrivacyConsentPopup {
     constructor(elementId = 'splash-screen') {
-        this.splashScreen = document.getElementById(elementId);
+        this.popup = document.getElementById(elementId);
 
         // Handle cases where the element might not exist.
-        if (!this.splashScreen) {
-            console.error(`Splash screen element with ID "${elementId}" not found.`);
+        if (!this.popup) {
+            console.error(`Privacy consent popup element with ID "${elementId}" not found.`);
+            return;
+        }
+
+        // Check if user has already consented
+        if (this.hasUserConsented()) {
+            this.hide();
+            // Initialize analytics if user has already consented
+            if (window.initializeAnalytics) {
+                window.initializeAnalytics();
+            }
             return;
         }
 
@@ -19,42 +27,114 @@ class SplashScreen {
     }
 
     /**
-     * Initializes the splash screen logic.
+     * Checks if user has already given consent.
+     * @returns {boolean} True if user has consented, false otherwise.
      */
-    async init() {
-        // ✨ NEW: Uses Promise.all for a smarter loading experience.
-        // The splash screen will hide only after BOTH the page is fully loaded
-        // AND the minimum display time has passed.
-        const pageLoadPromise = new Promise(resolve => {
-            window.addEventListener('load', resolve, { once: true });
-        });
-
-        const minTimePromise = new Promise(resolve => {
-            setTimeout(resolve, this.MIN_DISPLAY_TIME);
-        });
-
-        await Promise.all([pageLoadPromise, minTimePromise]);
-
-        this.hide();
+    hasUserConsented() {
+        // Check for consent in localStorage
+        return localStorage.getItem('privacyConsent') === 'true';
     }
 
     /**
-     * Hides the splash screen and removes it from the DOM after the transition ends.
+     * Sets user consent status.
+     * @param {boolean} consented - True if user consents, false otherwise.
+     */
+    setUserConsent(consented) {
+        localStorage.setItem('privacyConsent', consented ? 'true' : 'false');
+    }
+
+    /**
+     * Initializes the privacy consent popup logic.
+     */
+    init() {
+        // Add event listeners to consent buttons
+        const acceptButton = document.getElementById('consent-accept');
+        const rejectButton = document.getElementById('consent-reject');
+
+        if (acceptButton) {
+            acceptButton.addEventListener('click', () => this.handleAccept());
+        } else {
+            console.error('Accept button not found');
+        }
+
+        if (rejectButton) {
+            rejectButton.addEventListener('click', () => this.handleReject());
+        } else {
+            console.error('Reject button not found');
+        }
+    }
+
+    /**
+     * Handles user acceptance of privacy policy.
+     */
+    handleAccept() {
+        this.setUserConsent(true);
+        this.hide();
+
+        // Show loading screen after consent
+        setTimeout(() => {
+            const loadingScreen = document.getElementById('loading-screen');
+            if (loadingScreen) {
+                loadingScreen.classList.remove('hidden');
+                // Hide loading screen after some time
+                setTimeout(() => {
+                    loadingScreen.classList.add('hidden');
+                    loadingScreen.addEventListener('transitionend', () => {
+                        loadingScreen.remove();
+                    }, { once: true });
+                }, 2000); // Show loading screen for 2 seconds
+            }
+        }, 500);
+
+        // Initialize analytics after user consents
+        if (window.initializeAnalytics) {
+            window.initializeAnalytics();
+        } else {
+            console.error('Analytics initialization function not found');
+        }
+
+        console.log('User accepted privacy policy');
+    }
+
+    /**
+     * Handles user rejection of privacy policy.
+     */
+    handleReject() {
+        this.setUserConsent(false);
+
+        // For rejection, redirect the user or show a different message
+        // In this case, we'll show a message and then redirect
+        this.popup.innerHTML = `
+            <div class="splash-content">
+                <h3 class="privacy-title">アクセスが制限されました</h3>
+                <p class="privacy-text">プライバシーポリシーに同意しない場合、サイトにアクセスできません。</p>
+                <p class="privacy-text">5秒後にトップページにリダイレクトします...</p>
+            </div>
+        `;
+
+        // Redirect after 5 seconds
+        setTimeout(() => {
+            window.location.href = 'about:blank'; // Replace with actual redirect URL
+        }, 5000);
+
+        console.log('User rejected privacy policy');
+    }
+
+    /**
+     * Hides the privacy consent popup and removes it from the DOM after the transition ends.
      */
     hide() {
         // Add the class to trigger the CSS fade-out transition.
-        this.splashScreen.classList.add('hidden');
+        this.popup.classList.add('hidden');
 
-        // ✨ REFINED: Instead of a fixed setTimeout, we listen for the 'transitionend' event.
-        // This ensures the element is removed only after the CSS transition is complete,
-        // making the code resilient to changes in CSS animation duration.
-        this.splashScreen.addEventListener('transitionend', () => {
-            this.splashScreen.remove();
-        }, { once: true }); // The listener will automatically remove itself after firing once.
+        // Listen for the 'transitionend' event to remove the element
+        this.popup.addEventListener('transitionend', () => {
+            this.popup.remove();
+        }, { once: true });
     }
 }
 
 // Instantiate the class once the basic document structure is ready.
 document.addEventListener('DOMContentLoaded', () => {
-    new SplashScreen();
+    new PrivacyConsentPopup();
 });

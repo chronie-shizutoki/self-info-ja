@@ -5,18 +5,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>自己紹介 v.0.2 (にゃんこ日本語)</title>
     <link rel="stylesheet" href="splash-screen.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="liquid-glass-block.css">
 </head>
 <body>
-    <!-- Global Pre-popup -->
+    <!-- Privacy Consent Popup -->
     <div id="splash-screen" class="splash-screen">
+        <div class="splash-content">
+            <h3 class="privacy-title">プライバシーポリシー同意</h3>
+            <p class="privacy-text">サイトはGoogleアナリティクス4（GA4）を使っています♡</p>
+            <p class="privacy-text">アクセスした瞬間に、あなたの大切なデータ（IPアドレス・クッキー・位置情報など）をGoogleとシェアしたり海外に送ったりすることに同意したことになりますね～</p>
+            <p class="privacy-text">プライバシー保護のために全力で匿名化してるよ！★</p>
+            <div class="privacy-links">
+                <a href="https://storage.googleapis.com/support-kms-prod/KYaKZ5CAhIQ4rjgEFWIy6qKRzRSJjdGjrYFW" target="_blank" class="privacy-link">もっと知りたい？（English）</a>
+                <a href="document.html" class="privacy-link">プライバシー同意書</a>
+            </div>
+            <div class="privacy-buttons">
+                <button id="consent-accept" class="consent-button accept">ぽちっと続ける？</button>
+                <button id="consent-reject" class="consent-button reject">それとも…すぐに出る？</button>
+            </div>
+        </div>
+    </div>
+<body>
+    <!-- Loading Screen with Girl's Prayer -->
+    <div id="loading-screen" class="splash-screen hidden">
         <div class="splash-content">
             <div class="loader"></div>
             <p class="splash-text">少女がお願いを祈ってるよ…</p>
         </div>
     </div>
-<link rel="stylesheet" href="style.css">
-<link rel="stylesheet" href="liquid-glass-block.css">
-<body>
+
     <canvas id="sakura-canvas" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: -1;"></canvas>
     <div class="header" style="display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100vh;">
         <div class="glass-container-apple">

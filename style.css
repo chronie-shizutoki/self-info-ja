@@ -6,6 +6,10 @@
     font-style: normal;
 }
 
+* {
+    font-family: 'KleeOne-Regular', sans-serif;
+}
+
 /* 1. Basic and Background Settings */
 body {
     margin: 0; /* Remove the default margin of the body */

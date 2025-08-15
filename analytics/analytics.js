@@ -69,8 +69,8 @@ const getVisitorIPInfo = async () => {
   }
 };
 
-// Initialize after the page is loaded
-document.addEventListener('DOMContentLoaded', async () => {
+// Initialize analytics when user consents to privacy policy
+const initializeAnalytics = async () => {
   // Load GA
   loadGoogleAnalytics();
 
@@ -96,6 +96,9 @@ document.addEventListener('DOMContentLoaded', async () => {
       }
     }
   }, 100); // Check every 100ms
-});
+};
+
+// Make initializeAnalytics available globally
+window.initializeAnalytics = initializeAnalytics;
 
 export { recordVisit, getVisitorIPInfo };
