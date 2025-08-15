@@ -223,3 +223,57 @@
     75% { transform: translate(-50%, 0%) rotate(270deg) scale(0.95); }
     100% { transform: translate(-50%, -50%) rotate(360deg); }
 }
+
+@media screen and (max-width: 768px) {
+    .splash-content {
+        width: 90%;
+        padding: 2rem 1.5rem;
+    }
+
+    .privacy-title {
+        font-size: 1.3rem;
+    }
+
+    .privacy-text {
+        font-size: 0.9rem;
+    }
+
+    .splash-text {
+        font-size: 1rem;
+    }
+
+    .privacy-buttons {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .consent-button {
+        width: 100%;
+        padding: 0.7rem 1rem;
+        font-size: 0.9rem;
+    }
+
+    .privacy-links {
+        flex-direction: column;
+        gap: 0.8rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .splash-content {
+        padding: 1.5rem 1rem;
+    }
+
+    .privacy-title {
+        font-size: 1.2rem;
+    }
+
+    .privacy-text {
+        font-size: 0.85rem;
+    }
+
+    .loader {
+        width: 40px;
+        height: 40px;
+    }
+}
