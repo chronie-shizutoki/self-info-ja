@@ -16,6 +16,17 @@ class PrivacyConsentPopup {
         // Check if user has already consented
         if (this.hasUserConsented()) {
             this.hide();
+            // 显示加载屏幕
+            setTimeout(() => {
+                const loadingScreen = document.getElementById('loading-screen');
+                if (loadingScreen) {
+                    loadingScreen.classList.remove('hidden');
+                    // 2秒后隐藏加载屏幕
+                    setTimeout(() => {
+                        loadingScreen.classList.add('hidden');
+                    }, 2000);
+                }
+            }, 500);
             // Initialize analytics if user has already consented
             if (window.initializeAnalytics) {
                 window.initializeAnalytics();
@@ -78,10 +89,9 @@ class PrivacyConsentPopup {
                 loadingScreen.classList.remove('hidden');
                 // Hide loading screen after some time
                 setTimeout(() => {
-                    loadingScreen.classList.add('hidden');
-                    loadingScreen.addEventListener('transitionend', () => {
-                        loadingScreen.remove();
-                    }, { once: true });
+                    // 仅隐藏加载屏幕而不删除，以便下次访问时可以重新显示
+            loadingScreen.classList.add('hidden');
+            // 不使用remove()，而是保留元素
                 }, 2000); // Show loading screen for 2 seconds
             }
         }, 500);
