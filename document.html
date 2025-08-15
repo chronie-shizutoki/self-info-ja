@@ -65,6 +65,8 @@
         
         .content {
             padding: 30px 40px;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
         }
         
         h2 {
@@ -99,7 +101,7 @@
         }
         
         li:before {
-            content: "•";
+            content: "";
             color: var(--text);
             position: absolute;
             left: 0;
@@ -441,7 +443,12 @@
                 </tbody>
             </table>
             
-            <p>権利行使窓口: <a href="mailto:quiettimejsg@gmail.com">quiettimejsg@gmail.com</a></p>
+            <p>権利行使窓口: </p>
+            <p>
+                <a href="mailto:quiettimejsg@gmail.com">
+                    quiettimejsg@gmail.com
+                </a>
+            </p>
             
             <div class="notice-box">
                 <strong>重要:</strong> データ消去要求はGoogle Analytics上で処理されますが、バックアップシステムから完全に削除されるまで最大30日を要します（APPI第33条）。
