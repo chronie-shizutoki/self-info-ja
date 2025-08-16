@@ -1,0 +1,129 @@
+.compact-countdown {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 15px;
+    border-radius: 30px;
+    background: linear-gradient(45deg, 
+        #ff9aa2 0%, 
+        #ffb7b2 20%, 
+        #ffdac1 40%, 
+        #e2f0cb 60%, 
+        #b5ead7 80%, 
+        #c7ceea 100%);
+    box-shadow: 0 4px 15px rgba(255, 105, 180, 0.4);
+    color: white;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    font-size: 0.9rem;
+    overflow: hidden;
+    border: 2px solid white;
+    animation: pulse 2s infinite;
+    transition: all 0.3s ease;
+    margin: 0 auto;
+    width: fit-content;
+}
+
+.compact-countdown:hover {
+    transform: scale(1.03);
+    box-shadow: 0 6px 20px rgba(255, 105, 180, 0.6);
+}
+
+.cake-icon {
+    font-size: 0.8rem;
+    margin-right: 8px;
+    animation: bounce 1.5s infinite;
+}
+
+.days-count {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin: 0 5px;
+    min-width: 35px;
+    text-align: center;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.separator {
+    font-size: 0.8rem;
+    margin: 0 3px;
+    animation: spin 3s infinite linear;
+}
+
+.bubble {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    animation: float 8s infinite ease-in-out;
+    z-index: -1;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1); }
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes float {
+    0%, 100% { transform: translate(0, 0); }
+    25% { transform: translate(-6px, -9px); }
+    50% { transform: translate(3px, -12px); }
+    75% { transform: translate(6px, 3px); }
+}
+
+/* Mobile adaptation code is refactored to reduce redundancy and make it more reasonable */
+@media (max-width: 475px) {
+    .compact-countdown {
+        flex-wrap: wrap;
+        font-size: 0.7rem;
+        padding: 6px 10px;
+    }
+    
+    .cake-icon {
+        font-size: 0.7rem;
+        width: 100%;
+        text-align: center;
+        margin-right: 0;
+        margin-bottom: 4px;
+    }
+    
+    .days-count {
+        font-size: 1rem;
+        min-width: 30px;
+    }
+}
+
+@media (max-width: 360px) {
+    .compact-countdown,
+    .cake-icon {
+        font-size: 0.6rem;
+    }
+    
+    .compact-countdown {
+        padding: 5px 8px;
+    }
+    
+    .days-count {
+        font-size: 0.8rem;
+    }
+}
+@media (max-width: 320px) {
+    .compact-countdown,
+    .cake-icon {
+        font-size: 0.5rem;
+    }
+    
+    .compact-countdown {
+        padding: 4px 6px;
+    }
+    
+    .days-count {
+        font-size: 0.7rem;
+        min-width: 25px;
+        margin: 0;
+    }
+}

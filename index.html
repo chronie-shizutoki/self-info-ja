@@ -4,9 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>自己紹介 v.0.2 (にゃんこ日本語)</title>
-    <link rel="stylesheet" href="splash-screen.css">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="liquid-glass-block.css">
+    <link rel="stylesheet" href="components/splash-screen.css">
+    <link rel="stylesheet" href="components/style.css">
+    <link rel="stylesheet" href="components/liquid-glass-block.css">
+    <link rel="stylesheet" href="components/birthday.css">
 </head>
 <body>
     <!-- Privacy Consent Popup -->
@@ -48,6 +49,13 @@
     <div class="section">
         <div class="glass-container-apple">
         <h3 class="section-title">🎂 誕生ひみつ物語</h3>
+        <div class="compact-countdown" id="countdown">
+            <span class="cake-icon">🎂</span>
+            <span>お誕生日まで</span>
+            <span>あと</span>
+            <span class="days-count" id="days"></span>
+            <span>日なの～♡</span>
+        </div>
         <ul>
             <li><strong class="highlight">乙女座の</strong><strong class="highlight ql-size-5">魔法</strong><strong class="highlight">が咲いた初日</strong><span class="info-text">に地球に降り立ったの～</span></li>
             <li><span class="info-text">（</span><strong class="highlight">旧暦7月11日</strong><span class="info-text">の月明かりが子守唄だったにゃ！🌙） </span></li>
@@ -120,7 +128,8 @@
             }
         }
     </style>
-    <script src="splash-screen.js"></script>
+    <script src="components/birthday.js"></script>
+    <script src="components/splash-screen.js"></script>
     <script type="module" src="anime/sakura.js"></script>
 <script type="module" src="analytics/analytics.js"></script>
 </body>
