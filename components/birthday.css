@@ -17,7 +17,6 @@
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
     font-size: 0.9rem;
     overflow: hidden;
-    border: 2px solid white;
     animation: pulse 2s infinite;
     transition: all 0.3s ease;
     margin: 0 auto;
@@ -56,11 +55,6 @@
     background: rgba(255, 255, 255, 0.2);
     animation: float 8s infinite ease-in-out;
     z-index: -1;
-}
-
-@keyframes pulse {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1); }
 }
 
 @keyframes spin {
