@@ -6,12 +6,12 @@ class LanguageSelector {
     constructor() {
         // Language data with Japanese and local language names, and external links
         this.languages = [
-            { code: 'ja', name: '日本語', localName: '日本語', link: 'https://self-info-ja.netlify.app/' },
             { code: 'en', name: '英語', localName: 'English', link: 'https://chronie-shizutoki.github.io/self-info-en' },
-            { code: 'zh-cn', name: '中国語(簡体字)', localName: '简体中文', link: 'https://chronie-shizutoki-self-info-zh-cn.netlify.app/' },
-            { code: 'zh-tw', name: '中国語（繁体字）', localName: '繁體中文', link: 'https://chronie-shizutoki.github.io/self-info-zh-tw/' },
+            { code: 'ja', name: '日本語', localName: '日本語', link: 'https://self-info-ja.netlify.app/' },
+            { code: 'zh-CN', name: '中国語(簡体字)', localName: '简体中文', link: 'https://chronie-shizutoki-self-info-zh-cn.netlify.app/' },
             { code: 'zh-MY', name: '中国語（マレーシア）', localName: '华语（马来西亚）', link: 'https://chronie-shizutoki.github.io/self-info-zh-myY/' },
             { code: 'zh-SG', name: '中国語（シンガポール）', localName: '华语（新加坡）', link: 'https://chronie-shizutoki.github.io/self-info-zh-sg/' },
+            { code: 'zh-TW', name: '中国語（繁体字）', localName: '繁體中文', link: 'https://chronie-shizutoki.github.io/self-info-zh-tw/' },
         ];
         
         // Initialize the language selector
