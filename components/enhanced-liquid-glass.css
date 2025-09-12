@@ -1,0 +1,169 @@
+/*
+ * Enhanced Liquid Glass Style - Advanced Glassmorphism Design
+ * Inspired by modern UI trends and Apple's design language
+ */
+
+/* Base glass container with enhanced liquid effects */
+.glass-container-apple {
+    position: relative;
+    overflow: hidden;
+    border-radius: 28px;
+    padding: 24px;
+    margin-bottom: 24px;
+    
+    /* Enhanced glass background with multiple layers */
+    background: 
+        linear-gradient(135deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.1) 100%),
+        linear-gradient(45deg, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+    
+    /* Advanced backdrop filter for liquid glass effect */
+    backdrop-filter: blur(30px) saturate(200%) brightness(1.1);
+    -webkit-backdrop-filter: blur(30px) saturate(200%) brightness(1.1);
+    
+    /* Multi-layered shadows for depth */
+    box-shadow: 
+        inset 0 1px 0 rgba(255, 255, 255, 0.4),
+        inset 0 -1px 0 rgba(255, 255, 255, 0.1),
+        0 12px 32px rgba(0, 0, 0, 0.15),
+        0 2px 8px rgba(0, 0, 0, 0.1);
+    
+    /* Subtle border with gradient */
+    border: 1px solid;
+    border-image: linear-gradient(135deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.1)) 1;
+    
+    /* Smooth transitions for interactions */
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Hover effects for enhanced interactivity */
+.glass-container-apple:hover {
+    transform: translateY(-2px) scale(1.01);
+    box-shadow: 
+        inset 0 1px 0 rgba(255, 255, 255, 0.5),
+        inset 0 -1px 0 rgba(255, 255, 255, 0.2),
+        0 20px 40px rgba(0, 0, 0, 0.2),
+        0 4px 12px rgba(0, 0, 0, 0.15);
+    
+    backdrop-filter: blur(35px) saturate(220%) brightness(1.15);
+    -webkit-backdrop-filter: blur(35px) saturate(220%) brightness(1.15);
+}
+
+/* Dynamic liquid light effect */
+.glass-container-apple::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    
+    /* Liquid gradient with multiple color stops */
+    background: 
+        radial-gradient(circle at 30% 30%, rgba(120, 180, 255, 0.3) 0%, transparent 40%),
+        radial-gradient(circle at 70% 70%, rgba(255, 120, 180, 0.2) 0%, transparent 35%),
+        radial-gradient(circle at 50% 50%, rgba(180, 255, 120, 0.15) 0%, transparent 45%);
+    
+    /* Smooth liquid animation */
+    animation: liquidFlow 25s ease-in-out infinite;
+    transform-origin: center center;
+    pointer-events: none;
+    z-index: -1;
+}
+
+/* Enhanced noise texture for realism */
+.glass-container-apple::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    
+    /* Improved noise pattern */
+    background-image: 
+        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><filter id="noise"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="3" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(%23noise)" opacity="0.03"/></svg>');
+    
+    border-radius: inherit;
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Liquid flow animation with enhanced movement */
+@keyframes liquidFlow {
+    0% {
+        transform: translate(-25%, -25%) rotate(0deg) scale(1);
+    }
+    20% {
+        transform: translate(0%, -30%) rotate(72deg) scale(1.1);
+    }
+    40% {
+        transform: translate(10%, 0%) rotate(144deg) scale(0.9);
+    }
+    60% {
+        transform: translate(-10%, 10%) rotate(216deg) scale(1.05);
+    }
+    80% {
+        transform: translate(-30%, -10%) rotate(288deg) scale(0.95);
+    }
+    100% {
+        transform: translate(-25%, -25%) rotate(360deg) scale(1);
+    }
+}
+
+/* Enhanced glass variants for different content types */
+.glass-container-apple.primary {
+    background: 
+        linear-gradient(135deg, rgba(120, 180, 255, 0.3) 0%, rgba(120, 180, 255, 0.15) 100%),
+        linear-gradient(45deg, rgba(255, 255, 255, 0.15) 0%, transparent 50%);
+}
+
+.glass-container-apple.secondary {
+    background: 
+        linear-gradient(135deg, rgba(255, 120, 180, 0.25) 0%, rgba(255, 120, 180, 0.1) 100%),
+        linear-gradient(45deg, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+}
+
+.glass-container-apple.accent {
+    background: 
+        linear-gradient(135deg, rgba(180, 255, 120, 0.25) 0%, rgba(180, 255, 120, 0.1) 100%),
+        linear-gradient(45deg, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .glass-container-apple {
+        border-radius: 20px;
+        padding: 18px;
+        margin-bottom: 18px;
+    }
+    
+    .glass-container-apple:hover {
+        transform: translateY(-1px) scale(1.005);
+    }
+}
+
+/* Enhanced focus states for accessibility */
+.glass-container-apple:focus-within {
+    outline: 2px solid rgba(120, 180, 255, 0.6);
+    outline-offset: 2px;
+}
+
+/* Subtle pulse animation for active states */
+.glass-container-apple.active {
+    animation: glassActivePulse 2s ease-in-out infinite;
+}
+
+@keyframes glassActivePulse {
+    0%, 100% {
+        box-shadow: 
+            inset 0 1px 0 rgba(255, 255, 255, 0.4),
+            inset 0 -1px 0 rgba(255, 255, 255, 0.1),
+            0 12px 32px rgba(0, 0, 0, 0.15),
+            0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+    50% {
+        box-shadow: 
+            inset 0 1px 0 rgba(255, 255, 255, 0.5),
+            inset 0 -1px 0 rgba(255, 255, 255, 0.2),
+            0 16px 40px rgba(120, 180, 255, 0.2),
+            0 4px 12px rgba(120, 180, 255, 0.1);
+    }
+}
+
