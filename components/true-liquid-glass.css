@@ -1,0 +1,254 @@
+/*
+ * True Liquid Glass Effect - Based on Apple's WWDC 2025 Design Language
+ * Features: Dynamic light bending, gel-like feel, three-layer composition
+ */
+
+/* Base liquid glass container */
+.glass-container-apple {
+    position: relative;
+    overflow: hidden;
+    border-radius: 24px;
+    padding: 24px;
+    margin-bottom: 24px;
+    
+    /* Minimal background - more transparent, less frosted */
+    background: rgba(255, 255, 255, 0.08);
+    
+    /* Reduced blur for liquid glass effect */
+    backdrop-filter: blur(2px) saturate(180%) brightness(110%);
+    -webkit-backdrop-filter: blur(2px) saturate(180%) brightness(110%);
+    
+    /* Subtle border with transparency */
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    
+    /* Multi-layered shadows for depth - Shadow Layer */
+    box-shadow: 
+        0 8px 32px rgba(0, 0, 0, 0.12),
+        0 2px 8px rgba(0, 0, 0, 0.08),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3),
+        inset 0 -1px 0 rgba(255, 255, 255, 0.1);
+    
+    /* Smooth gel-like transitions */
+    transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+    
+    /* Enable 3D transforms for better performance */
+    transform: translateZ(0);
+    will-change: transform, box-shadow;
+}
+
+/* Highlight Layer - Light casting and movement */
+.glass-container-apple::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    
+    /* Dynamic highlight gradient */
+    background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.4) 0%,
+        rgba(255, 255, 255, 0.1) 25%,
+        transparent 50%,
+        rgba(255, 255, 255, 0.05) 75%,
+        rgba(255, 255, 255, 0.2) 100%
+    );
+    
+    border-radius: inherit;
+    pointer-events: none;
+    z-index: 1;
+    
+    /* Subtle movement animation */
+    animation: liquidHighlight 8s ease-in-out infinite;
+}
+
+/* Illumination Layer - Flexible material properties */
+.glass-container-apple::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    
+    /* Gel-like inner glow */
+    background: radial-gradient(
+        circle at 30% 20%,
+        rgba(255, 255, 255, 0.15) 0%,
+        rgba(255, 255, 255, 0.05) 40%,
+        transparent 70%
+    );
+    
+    border-radius: inherit;
+    pointer-events: none;
+    z-index: 2;
+    
+    /* Dynamic illumination */
+    animation: liquidIllumination 12s ease-in-out infinite;
+}
+
+/* Hover effects - Enhanced gel-like interaction */
+.glass-container-apple:hover {
+    transform: translateY(-1px) scale(1.005);
+    
+    /* Enhanced shadows on hover */
+    box-shadow: 
+        0 12px 40px rgba(0, 0, 0, 0.15),
+        0 4px 12px rgba(0, 0, 0, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.4),
+        inset 0 -1px 0 rgba(255, 255, 255, 0.15);
+    
+    /* Slightly more blur for liquid effect */
+    backdrop-filter: blur(3px) saturate(200%) brightness(115%);
+    -webkit-backdrop-filter: blur(3px) saturate(200%) brightness(115%);
+}
+
+/* Color variants with liquid glass properties */
+.glass-container-apple.primary {
+    background: rgba(120, 180, 255, 0.12);
+    border-color: rgba(120, 180, 255, 0.3);
+}
+
+.glass-container-apple.primary::before {
+    background: linear-gradient(
+        135deg,
+        rgba(120, 180, 255, 0.3) 0%,
+        rgba(255, 255, 255, 0.2) 25%,
+        transparent 50%,
+        rgba(120, 180, 255, 0.1) 75%,
+        rgba(120, 180, 255, 0.25) 100%
+    );
+}
+
+.glass-container-apple.secondary {
+    background: rgba(255, 120, 180, 0.12);
+    border-color: rgba(255, 120, 180, 0.3);
+}
+
+.glass-container-apple.secondary::before {
+    background: linear-gradient(
+        135deg,
+        rgba(255, 120, 180, 0.3) 0%,
+        rgba(255, 255, 255, 0.2) 25%,
+        transparent 50%,
+        rgba(255, 120, 180, 0.1) 75%,
+        rgba(255, 120, 180, 0.25) 100%
+    );
+}
+
+.glass-container-apple.accent {
+    background: rgba(180, 255, 120, 0.12);
+    border-color: rgba(180, 255, 120, 0.3);
+}
+
+.glass-container-apple.accent::before {
+    background: linear-gradient(
+        135deg,
+        rgba(180, 255, 120, 0.3) 0%,
+        rgba(255, 255, 255, 0.2) 25%,
+        transparent 50%,
+        rgba(180, 255, 120, 0.1) 75%,
+        rgba(180, 255, 120, 0.25) 100%
+    );
+}
+
+/* Liquid highlight animation */
+@keyframes liquidHighlight {
+    0%, 100% {
+        transform: translateX(0%) translateY(0%) rotate(0deg);
+        opacity: 0.6;
+    }
+    25% {
+        transform: translateX(2%) translateY(-1%) rotate(1deg);
+        opacity: 0.8;
+    }
+    50% {
+        transform: translateX(-1%) translateY(1%) rotate(-0.5deg);
+        opacity: 0.7;
+    }
+    75% {
+        transform: translateX(1%) translateY(-0.5%) rotate(0.5deg);
+        opacity: 0.9;
+    }
+}
+
+/* Liquid illumination animation */
+@keyframes liquidIllumination {
+    0%, 100% {
+        transform: scale(1) rotate(0deg);
+        opacity: 0.4;
+    }
+    33% {
+        transform: scale(1.02) rotate(1deg);
+        opacity: 0.6;
+    }
+    66% {
+        transform: scale(0.98) rotate(-1deg);
+        opacity: 0.5;
+    }
+}
+
+/* Active state with pulsing liquid effect */
+.glass-container-apple.active {
+    animation: liquidPulse 3s ease-in-out infinite;
+}
+
+@keyframes liquidPulse {
+    0%, 100% {
+        box-shadow: 
+            0 8px 32px rgba(0, 0, 0, 0.12),
+            0 2px 8px rgba(0, 0, 0, 0.08),
+            inset 0 1px 0 rgba(255, 255, 255, 0.3),
+            inset 0 -1px 0 rgba(255, 255, 255, 0.1);
+    }
+    50% {
+        box-shadow: 
+            0 12px 40px rgba(120, 180, 255, 0.2),
+            0 4px 12px rgba(120, 180, 255, 0.1),
+            inset 0 1px 0 rgba(255, 255, 255, 0.4),
+            inset 0 -1px 0 rgba(255, 255, 255, 0.2);
+    }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .glass-container-apple {
+        border-radius: 18px;
+        padding: 18px;
+        margin-bottom: 18px;
+    }
+    
+    .glass-container-apple:hover {
+        transform: translateY(-0.5px) scale(1.002);
+    }
+}
+
+/* Focus states for accessibility */
+.glass-container-apple:focus-within {
+    outline: 2px solid rgba(120, 180, 255, 0.5);
+    outline-offset: 2px;
+}
+
+/* Dark mode adaptations */
+@media (prefers-color-scheme: dark) {
+    .glass-container-apple {
+        background: rgba(255, 255, 255, 0.05);
+        border-color: rgba(255, 255, 255, 0.15);
+    }
+    
+    .glass-container-apple::before {
+        background: linear-gradient(
+            135deg,
+            rgba(255, 255, 255, 0.2) 0%,
+            rgba(255, 255, 255, 0.05) 25%,
+            transparent 50%,
+            rgba(255, 255, 255, 0.02) 75%,
+            rgba(255, 255, 255, 0.1) 100%
+        );
+    }
+}
+
+/* Performance optimizations */
+.glass-container-apple * {
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+}
+
