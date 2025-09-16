@@ -47,8 +47,8 @@ class LanguageSelector {
         button.style.right = '20px';
         button.style.padding = '10px 20px';
         button.style.borderRadius = '20px';
-        button.style.background = 'rgba(255, 255, 255, 0.2)';
-        button.style.backdropFilter = 'blur(10px)';
+        button.style.background = 'rgba(255, 255, 255, 0.15)';
+        button.style.backdropFilter = 'blur(5px)';
         button.style.border = '1px solid rgba(255, 255, 255, 0.3)';
         button.style.color = '#ffffff';
         button.style.fontFamily = 'KleeOne-Regular, system-ui, sans-serif';
@@ -96,8 +96,8 @@ class LanguageSelector {
         popup.style.maxHeight = '80vh'; // Limit height for mobile devices
         popup.style.padding = '20px';
         popup.style.borderRadius = '24px';
-        popup.style.background = 'rgba(255, 255, 255, 0.15)';
-        popup.style.backdropFilter = 'blur(25px) saturate(180%)';
+        popup.style.background = 'rgba(255, 255, 255, 0.12)';
+        popup.style.backdropFilter = 'blur(10px) saturate(140%)';
         popup.style.border = '1px solid rgba(255, 255, 255, 0.2)';
         popup.style.boxShadow = '0 8px 32px rgba(0, 0, 0, 0.2)';
         popup.style.zIndex = '1001';
@@ -124,7 +124,7 @@ class LanguageSelector {
             languageItem.style.display = 'block';
             languageItem.style.padding = '12px 15px';
             languageItem.style.borderRadius = '12px';
-            languageItem.style.background = 'rgba(255, 255, 255, 0.1)';
+            languageItem.style.background = 'rgba(255, 255, 255, 0.08)';
             languageItem.style.color = '#ffffff';
             languageItem.style.textDecoration = 'none';
             languageItem.style.transition = 'all 0.3s ease';
@@ -134,23 +134,23 @@ class LanguageSelector {
             
             // Add hover effect for desktop
             languageItem.addEventListener('mouseenter', () => {
-                languageItem.style.background = 'rgba(255, 255, 255, 0.2)';
+                languageItem.style.background = 'rgba(255, 255, 255, 0.15)';
                 languageItem.style.transform = 'translateX(5px)';
             });
             
             languageItem.addEventListener('mouseleave', () => {
-                languageItem.style.background = 'rgba(255, 255, 255, 0.1)';
+                languageItem.style.background = 'rgba(255, 255, 255, 0.08)';
                 languageItem.style.transform = 'translateX(0)';
             });
             
             // Add touch effect for mobile
             languageItem.addEventListener('touchstart', () => {
-                languageItem.style.background = 'rgba(255, 255, 255, 0.2)';
+                languageItem.style.background = 'rgba(255, 255, 255, 0.15)';
                 languageItem.style.transform = 'translateX(5px)';
             });
             
             languageItem.addEventListener('touchend', () => {
-                languageItem.style.background = 'rgba(255, 255, 255, 0.1)';
+                languageItem.style.background = 'rgba(255, 255, 255, 0.08)';
                 languageItem.style.transform = 'translateX(0)';
             });
             

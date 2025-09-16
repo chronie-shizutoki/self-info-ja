@@ -1,5 +1,5 @@
 /*
- * Optimized Glass Style - Inspired by Apple Human Interface Guidelines
+ * Liquid Glass Style - Enhanced with Dynamic Fluidity
  */
 .glass-container-apple {
     position: relative;
@@ -9,15 +9,19 @@
     margin-bottom: 20px;
     
     /* 1. Background Blur - Core Glass Texture */
-    background: rgba(255, 255, 255, 0.15); /* Reduce opacity to make the blur effect more prominent */
-    backdrop-filter: blur(25px) saturate(180%);
-    -webkit-backdrop-filter: blur(25px) saturate(180%);
+    background: rgba(255, 255, 255, 0.08); /* Reduced opacity for enhanced transparency */
+    backdrop-filter: blur(15px) saturate(140%);
+    -webkit-backdrop-filter: blur(15px) saturate(140%);
 
     /* 2. Exquisite Borders and Shadows */
     /* Use inset box-shadow to simulate a highlight border, softer than border */
     box-shadow: 
-        inset 0 0 0 1px rgba(255, 255, 255, 0.2), /* 1px internal highlight border */
-        0 8px 32px rgba(0, 0, 0, 0.2); /* Softer and more natural external shadow */
+        inset 0 0 0 1px rgba(255, 255, 255, 0.25), /* Enhanced internal highlight border */
+        0 8px 32px rgba(0, 0, 0, 0.15), /* Softer shadow for lighter feel */
+        0 0 0 1px rgba(255, 255, 255, 0.08); /* Subtle outer glow */
+        
+    /* Fluid transition for all properties */
+    transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 /* 3. Dynamic Halo Effect - Simulate Ambient Light */
@@ -30,40 +34,45 @@
     height: 200%;
     
     /* Create a soft, blurred radial gradient as the light source */
-    background: radial-gradient(circle at 25% 25%, rgba(100, 150, 255, 0.2), transparent 40%);
+    background: radial-gradient(circle at 25% 25%, 
+        rgba(100, 150, 255, 0.25), 
+        rgba(255, 200, 220, 0.15), 
+        transparent 40%);
     
-    /* Animation: Make the halo move slowly and smoothly */
-    animation: aurora-glow 20s ease-in-out infinite;
     transform-origin: center center;
+    opacity: 0.6; /* Reduced opacity to maintain transparency */
 }
 
-/* 4. Material Noise - Enhance Realism (Optional but Highly Effective) */
+/* 4. Material Noise - Enhance Realism with Subtle Texture */
 .glass-container-apple::after {
     content: '';
     position: absolute;
     inset: 0;
     
-    /* Use SVG filter or tiled image to create noise texture */
-    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.75" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(%23n)" opacity="0.05"/></svg>');
+    /* Enhanced SVG noise texture with finer details */
+    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="3" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(%23n)" opacity="0.03"/></svg>');
     
     pointer-events: none; /* Ensure the noise layer doesn't interfere with mouse events */
+    opacity: 0.8;
+    transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 
-@keyframes aurora-glow {
-    0% {
-        transform: translate(-50%, -50%) rotate(0deg);
-    }
-    25% {
-        transform: translate(0%, -50%) rotate(90deg) scale(0.9);
-    }
-    50% {
-        transform: translate(0%, 0%) rotate(180deg) scale(1.1);
-    }
-    75% {
-        transform: translate(-50%, 0%) rotate(270deg) scale(0.95);
-    }
-    100% {
-        transform: translate(-50%, -50%) rotate(360deg);
-    }
+
+/* Hover interaction for enhanced fluidity */
+.glass-container-apple:hover {
+    transform: translateY(-2px);
+    background: rgba(255, 255, 255, 0.12); /* Slightly increased but still transparent on hover */
+    box-shadow: 
+        inset 0 0 0 1px rgba(255, 255, 255, 0.3),
+        0 12px 40px rgba(0, 0, 0, 0.18),
+        0 0 0 1px rgba(255, 255, 255, 0.12);
+}
+
+.glass-container-apple:hover::before {
+    opacity: 1;
+}
+
+.glass-container-apple:hover::after {
+    opacity: 1;
 }
