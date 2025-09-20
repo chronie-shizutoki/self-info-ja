@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>自己紹介 (にゃんこ日本語)</title>
+    <link rel="stylesheet" href="components/kana.css">
     <link rel="stylesheet" href="components/splash-screen.css">
     <link rel="stylesheet" href="components/style.css">
     <link rel="stylesheet" href="components/liquid-glass-block.css">
@@ -28,6 +29,38 @@
             <p class="privacy-text consent-warning">アクセスを続けると、データがアメリカに送られちゃうことに同意したことになるよ～！アメリカの法律が適用されるかもだよ～うぅ～(´•ω•｀)♡</p>
         </div>
     </div>
+    
+    <!-- Kana Version Jump Popup -->
+    <div id="kana-popup" class="kana-popup">
+        <div class="kana-popup-text">
+            うーん…<ruby>漢字<rt>かんじ</rt></ruby>がわかんないでゃ？<ruby>大丈夫<rt>だいじょうぶ</rt></ruby>だよ～<br>
+            <a href="index-kana.html" class="kana-popup-link"><ruby>振<rt>ふ</rt></ruby>り<ruby>仮名<rt>がな</rt></ruby>つきバージョンを<ruby>見<rt>み</rt></ruby>てみてね！(｡>ㅅ<｡)ﾉ</a>
+        </div>
+        <button id="kana-popup-close" class="kana-popup-close" title="Close">
+            子供なんかじゃないも！(๑•̀ㅂ•́)و✧
+        </button>
+    </div>
+    
+    <script>
+        // Kana Version Jump Popup Close Functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const popup = document.getElementById('kana-popup');
+            const closeButton = document.getElementById('kana-popup-close');
+            
+            // Check if the popup has been closed before
+            if (localStorage.getItem('kanaPopupClosed') === 'true') {
+                popup.classList.add('hidden');
+            }
+            
+            // Kana Version Jump Popup Close Button Click Event
+            closeButton.addEventListener('click', function() {
+                popup.classList.add('hidden');
+                // Remember the user's close choice
+                localStorage.setItem('kanaPopupClosed', 'true');
+            });
+        });
+    </script>
+
 <body>
     <!-- Loading Screen with Girl's Prayer -->
     <div id="loading-screen" class="splash-screen hidden">
