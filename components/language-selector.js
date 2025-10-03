@@ -9,8 +9,7 @@ class LanguageSelector {
             { code: 'en', name: '英語', localName: 'English', link: 'https://chronie-shizutoki.github.io/self-info-en' },
             { code: 'ja', name: '日本語', localName: '日本語', link: 'https://self-info-ja.netlify.app/' },
             { code: 'zh-CN', name: '中国語（簡体字）', localName: '简体中文（中国大陆）', link: 'https://chronie-shizutoki-self-info-zh-cn.netlify.app/' },
-            { code: 'zh-MY', name: '中国語（マレーシア）', localName: '华文（马来西亚）', link: 'https://chronie-shizutoki.github.io/self-info-zh-my/' },
-            { code: 'zh-SG', name: '中国語（シンガポール）', localName: '华文（新加坡）', link: 'https://chronie-shizutoki.github.io/self-info-zh-sg/' },
+            { code: 'zh-Hans', name: '中国語（東南アジア）', localName: '华文（马来西亚/新加坡）', link: 'https://self-info-zh-hans.netlify.app/' },
             { code: 'zh-TW', name: '中国語（繁体字）', localName: '繁體中文（台灣）', link: 'https://chronie-shizutoki.github.io/self-info-zh-tw/' },
         ];
         
