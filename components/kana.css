@@ -1,113 +1,36 @@
-.kana-popup {
+.kana-button {
     position: fixed;
     top: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: rgba(255, 255, 255, 0.08); /* Reduced opacity for enhanced transparency */
-    backdrop-filter: blur(15px) saturate(140%);
-    -webkit-backdrop-filter: blur(15px) saturate(140%);
-    border: 2px solid rgba(255, 105, 180, 0.25);
-    border-radius: 20px;
-    padding: 15px 25px;
-    box-shadow: 
-        0 8px 32px rgba(31, 38, 135, 0.15),
-        0 0 0 1px rgba(255, 255, 255, 0.2) inset,
-        0 0 20px rgba(255, 255, 255, 0.4) inset;
-    z-index: 10000;
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    max-width: 90%;
-    min-width: 300px;
-    overflow: hidden;
-}
-
-.kana-popup.hidden {
-    opacity: 0;
-    transform: translate(-50%, -100%);
-    pointer-events: none;
-}
-
-.kana-popup-text {
-    color: #e4e4e4;
-    font-size: 16px;
-    line-height: 1.5;
-    text-align: center;
-    flex: 1;
-}
-
-.kana-popup-text ruby {
-    text-decoration: none;
-}
-
-.kana-popup-text rt {
-    color: #ff69b4;
-    font-size: 12px;
-}
-
-.kana-popup-link {
-    color: #ff69b4;
-    text-decoration: none;
-    font-weight: bold;
-    transition: color 0.3s ease;
-    display: inline-block;
-    padding: 5px 10px;
-    background: rgba(255, 255, 255, 0.3);
-    border-radius: 15px;
-    margin: 5px 0;
-    border: 1px solid rgba(255, 105, 180, 0.3);
-}
-
-.kana-popup-link:hover {
-    color: #ff1493;
-    background: rgba(255, 255, 255, 0.5);
-}
-
-.kana-popup-close {
-    background: linear-gradient(to bottom, #ff69b4, #ff1493);
-    color: white;
-    border: none;
-    border-radius: 20px;
+    right: 120px; /* Position to the left of the language button */
     padding: 10px 20px;
-    min-width: 120px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: #ffffff;
+    font-family: 'KleeOne-Regular', system-ui, sans-serif;
+    font-size: 12px;
+    text-decoration: none;
     cursor: pointer;
-    font-size: 14px;
-    font-weight: bold;
+    z-index: 1000;
     transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     display: flex;
     align-items: center;
     justify-content: center;
-    text-align: center;
-    line-height: 1.2;
-    box-shadow: 0 4px 15px rgba(255, 105, 180, 0.3);
-    white-space: nowrap;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
 }
 
-.kana-popup-close:hover {
-    background: linear-gradient(to bottom, #ff1493, #ff69b4);
-    transform: scale(1.05);
-    box-shadow: 0 6px 20px rgba(255, 105, 180, 0.4);
+.kana-button:hover {
+    background: rgba(255, 255, 255, 0.25);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+    color: #ffffff;
+    text-decoration: none;
 }
 
-@media (max-width: 768px) {
-    .kana-popup {
-        flex-direction: column;
-        padding: 15px;
-        gap: 15px;
-    }
-
-    .kana-popup-text {
-        font-size: 14px;
-    }
-
-    .kana-popup-text rt {
-        font-size: 10px;
-    }
-
-    .kana-popup-close {
-        width: 100%;
-        min-width: unset;
-        padding: 8px 16px;
-        font-size: 13px;
-    }
+.kana-button:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }

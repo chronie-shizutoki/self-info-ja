@@ -1,64 +1,94 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>じこしょうかいにゃんこにほんご・かなふりあり</title>
+    <link rel="stylesheet" href="components/kana.css">
     <link rel="stylesheet" href="components/splash-screen.css">
     <link rel="stylesheet" href="components/style.css">
     <link rel="stylesheet" href="components/liquid-glass-block.css">
     <link rel="stylesheet" href="components/birthday.css">
 </head>
+
 <body>
-   <!-- Privacy Consent Popup -->
-<div id="splash-screen" class="splash-screen">
-    <div class="splash-content">
-        <h3 class="privacy-title">プライバシーポリシー<ruby>同意<rt>どうい</rt></ruby></h3>
-        <p class="privacy-text">サイトは<ruby>Google<rt>グーグル</rt></ruby>アナリティクス4（GA4）を<ruby>使<rt>つか</rt></ruby>っています♡</p>
-        <p class="privacy-text">アクセスした<ruby>瞬間<rt>しゅんかん</rt></ruby>に、あなたの<ruby>大切<rt>たいせつ</rt></ruby>なデータ（<ruby>IP<rt>あいぴー</rt></ruby>アドレス・クッキー・<ruby>位置情報<rt>いちじょうほう</rt></ruby>など）を<ruby>Google<rt>グーグル</rt></ruby>とシェアしたり<ruby>海外<rt>かいがい</rt></ruby>に<ruby>送<rt>おく</rt></ruby>ったりすることに<ruby>同意<rt>どうい</rt></ruby>したことになりますね～</p>
-        <p class="privacy-text">プライバシー<ruby>保護<rt>ほご</rt></ruby>のために<ruby>全力<rt>ぜんりょく</rt></ruby>で<ruby>匿名化<rt>とくめいか</rt></ruby>してるよ！★</p>
-        <div class="privacy-links">
-            <a href="https://storage.googleapis.com/support-kms-prod/KYaKZ5CAhIQ4rjgEFWIy6qKRzRSJjdGjrYFW" target="_blank" class="privacy-link">もっと<ruby>知<rt>し</rt></ruby>りたい？（English）</a>
-            <a href="document.html" class="privacy-link">プライバシー<ruby>同意書<rt>どういしょ</rt></ruby></a>
+    <!-- Privacy Consent Popup -->
+    <div id="splash-screen" class="splash-screen">
+        <div class="splash-content">
+            <h3 class="privacy-title">プライバシーポリシー<ruby>同意<rt>どうい</rt></ruby></h3>
+            <p class="privacy-text">サイトは<ruby>Google<rt>グーグル</rt></ruby>アナリティクス4（GA4）を<ruby>使<rt>つか</rt></ruby>っています♡
+            </p>
+            <p class="privacy-text">アクセスした<ruby>瞬間<rt>しゅんかん</rt></ruby>に、あなたの<ruby>大切<rt>たいせつ</rt></ruby>なデータ（<ruby>IP
+                    <rt>あいぴー</rt></ruby>アドレス・クッキー・<ruby>位置情報<rt>いちじょうほう</rt></ruby>など）を<ruby>Google<rt>グーグル</rt>
+                    </ruby>とシェアしたり<ruby>海外<rt>かいがい</rt></ruby>に<ruby>送<rt>おく</rt></ruby>ったりすることに<ruby>同意<rt>どうい</rt>
+                    </ruby>したことになりますね～</p>
+            <p class="privacy-text">プライバシー<ruby>保護<rt>ほご</rt></ruby>のために<ruby>全力<rt>ぜんりょく</rt></ruby>で<ruby>匿名化<rt>とくめいか
+                    </rt></ruby>してるよ！★</p>
+            <div class="privacy-links">
+                <a href="https://storage.googleapis.com/support-kms-prod/KYaKZ5CAhIQ4rjgEFWIy6qKRzRSJjdGjrYFW"
+                    target="_blank" class="privacy-link">もっと<ruby>知<rt>し</rt></ruby>りたい？（English）</a>
+                <a href="document.html" class="privacy-link">プライバシー<ruby>同意書<rt>どういしょ</rt></ruby></a>
+            </div>
+            <div class="privacy-buttons">
+                <button id="consent-accept" class="consent-button accept">ぽちっと<ruby>続<rt>つづ</rt></ruby>ける？</button>
+                <button id="consent-reject" class="consent-button reject">それとも…すぐに<ruby>出<rt>で</rt></ruby>る？</button>
+            </div>
+            <p class="privacy-text consent-warning"><ruby>訪問<rt>ほうもん</rt></ruby>を<ruby>続<rt>つづ</rt>
+                    </ruby>けると、データがアメリカに<ruby>送<rt>おく</rt></ruby>られちゃうことに<ruby>同意<rt>どうい</rt>
+                    </ruby>したことになるよ～！アメリカの<ruby>法律<rt>ほうりつ</rt></ruby>が<ruby>適用<rt>てきよう</rt></ruby>されるかもだよ～うぅ～(´•ω•｀)♡
+            </p>
         </div>
-        <div class="privacy-buttons">
-            <button id="consent-accept" class="consent-button accept">ぽちっと<ruby>続<rt>つづ</rt></ruby>ける？</button>
-            <button id="consent-reject" class="consent-button reject">それとも…すぐに<ruby>出<rt>で</rt></ruby>る？</button>
+    </div>
+
+    <!-- Kana Version Button -->
+    <a href="index.html" id="kana-button" class="kana-button">
+        <ruby>漢字<rt>かんじ</rt></ruby>
+    </a>
+
+    <!-- Loading Screen with Girl's Prayer -->
+    <div id="loading-screen" class="splash-screen hidden">
+        <div class="splash-content-girl">
+            <div class="loader"></div>
+            <p class="splash-text"><ruby>少女<rt>しょうじょ</rt></ruby>が<ruby>願<rt>ねが</rt></ruby>いを<ruby>祈<rt>いの</rt>
+                    </ruby>ってるよ…</p>
         </div>
-        <p class="privacy-text consent-warning"><ruby>訪問<rt>ほうもん</rt></ruby>を<ruby>続<rt>つづ</rt></ruby>けると、データがアメリカに<ruby>送<rt>おく</rt></ruby>られちゃうことに<ruby>同意<rt>どうい</rt></ruby>したことになるよ～！アメリカの<ruby>法律<rt>ほうりつ</rt></ruby>が<ruby>適用<rt>てきよう</rt></ruby>されるかもだよ～うぅ～(´•ω•｀)♡</p>
     </div>
-</div>
 
-<!-- Loading Screen with Girl's Prayer -->
-<div id="loading-screen" class="splash-screen hidden">
-    <div class="splash-content-girl">
-        <div class="loader"></div>
-        <p class="splash-text"><ruby>少女<rt>しょうじょ</rt></ruby>が<ruby>願<rt>ねが</rt></ruby>いを<ruby>祈<rt>いの</rt></ruby>ってるよ…</p>
-    </div>
-</div>
+    <canvas id="sakura-canvas"
+        style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: -1;"></canvas>
 
-    <canvas id="sakura-canvas" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: -1;"></canvas>
-    
-    <div class="header" style="display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100vh;">
+    <div class="header"
+        style="display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100vh;">
         <div class="glass-container-apple">
             <p class="info-text">はーい、<ruby>初<rt>はじ</rt></ruby>めましてにゃん！ (◕‿◕✿)</p>
-            <p><strong class="highlight"><ruby>静時<rt>しずとき</rt></ruby>ねこたん</strong><span class="info-text"> って<ruby>呼<rt>よ</rt></ruby>んでね～</span></p>
-            <p><span class="info-text"><ruby>星<rt>ほし</rt></ruby>みたいにキラキラの </span><strong class="highlight">クロニー（Chronie）</strong><span class="info-text"> でもOKだよん！✨ </span></p>
+            <p><strong class="highlight"><ruby>静時<rt>しずとき</rt></ruby>ねこたん</strong><span class="info-text"> って<ruby>呼<rt>
+                            よ</rt></ruby>んでね～</span></p>
+            <p><span class="info-text"><ruby>星<rt>ほし</rt></ruby>みたいにキラキラの </span><strong
+                    class="highlight">クロニー（Chronie）</strong><span class="info-text"> でもOKだよん！✨ </span></p>
         </div>
     </div>
-    
+
     <br>
-    
+
     <div class="section">
         <div class="glass-container-apple">
-            <h3 class="section-title">🎂 <ruby>誕生<rt>たんじょう</rt></ruby><ruby>秘密<rt>ひみつ</rt></ruby><ruby>物語<rt>ものがたり</rt></ruby></h3>
+            <h3 class="section-title">🎂 <ruby>誕生<rt>たんじょう</rt></ruby><ruby>秘密<rt>ひみつ</rt></ruby><ruby>物語<rt>ものがたり</rt>
+                    </ruby></h3>
             <div class="compact-countdown" id="countdown">
                 <span class="cake-icon">🎂</span>
                 <span class="birthday-today">今日は、私の誕生日なんだよ～！(＊´∀｀*)ﾉ</span>
             </div>
             <ul>
-                <li><strong class="highlight"><ruby>乙女座<rt>おとめざ</rt></ruby>の</strong><strong class="highlight ql-size-5"><ruby>魔法<rt>まほう</rt></ruby></strong><strong class="highlight">が<ruby>咲<rt>さ</rt></ruby>いた<ruby>初日<rt>しょにち</rt></ruby></strong><span class="info-text">に<ruby>地球<rt>ちきゅう</rt></ruby>に<ruby>降<rt>お</rt></ruby>り<ruby>立<rt>た</rt></ruby>ったの～</span></li>
-                <li><span class="info-text">（</span><strong class="highlight"><ruby>旧暦<rt>きゅうれき</rt></ruby><ruby>7月<rt>しちがつ</rt></ruby><ruby>11日<rt>じゅういちにち</rt></ruby></strong><span class="info-text">の<ruby>月明<rt>つきあ</rt></ruby>かりが<ruby>子守唄<rt>こもりうた</rt></ruby>だったにゃ！🌙） </span></li>
+                <li><strong class="highlight"><ruby>乙女座<rt>おとめざ</rt></ruby>の</strong><strong
+                        class="highlight ql-size-5"><ruby>魔法<rt>まほう</rt></ruby></strong><strong
+                        class="highlight">が<ruby>咲<rt>さ</rt></ruby>いた<ruby>初日<rt>しょにち</rt></ruby></strong><span
+                        class="info-text">に<ruby>地球<rt>ちきゅう</rt></ruby>に<ruby>降<rt>お</rt></ruby>り<ruby>立<rt>た</rt>
+                            </ruby>ったの～</span></li>
+                <li><span class="info-text">（</span><strong class="highlight"><ruby>旧暦<rt>きゅうれき</rt></ruby><ruby>7月<rt>
+                                しちがつ</rt></ruby><ruby>11日<rt>じゅういちにち</rt></ruby></strong><span
+                        class="info-text">の<ruby>月明<rt>つきあ</rt></ruby>かりが<ruby>子守唄<rt>こもりうた</rt></ruby>だったにゃ！🌙） </span>
+                </li>
             </ul>
         </div>
     </div>
@@ -67,8 +97,12 @@
         <div class="glass-container-apple">
             <h3 class="section-title">🗣️ <ruby>言語<rt>げんご</rt></ruby>ポケット</h3>
             <ul>
-                <li><strong style="color: #d5ffbf;"><ruby>日本語<rt>にほんご</rt></ruby>・<ruby>英語<rt>えいご</rt></ruby>・<ruby>簡体字<rt>かんたいじ</rt></ruby><ruby>中国語<rt>ちゅうごくご</rt></ruby>・<ruby>繁体字<rt>はんたいじ</rt></ruby><ruby>中国語<rt>ちゅうごくご</rt></ruby></strong><span class="info-text">全部<ruby>話<rt>はな</rt></ruby>せるよ！</span></li>
-                <li><span class="info-text">（<ruby>言語<rt>げんご</rt></ruby>チェンジはポケモンのタイプ<ruby>変更<rt>へんこう</rt></ruby>みたいで<ruby>楽<rt>たの</rt></ruby>しいぃ～(◠‿◠✿)） </span></li>
+                <li><strong style="color: #d5ffbf;"><ruby>日本語<rt>にほんご</rt></ruby>・<ruby>英語<rt>えいご</rt></ruby>・<ruby>簡体字
+                            <rt>かんたいじ</rt></ruby><ruby>中国語<rt>ちゅうごくご</rt></ruby>・<ruby>繁体字<rt>はんたいじ</rt></ruby><ruby>中国語
+                            <rt>ちゅうごくご</rt></ruby></strong><span class="info-text">全部<ruby>話<rt>はな</rt>
+                            </ruby>せるよ！</span></li>
+                <li><span class="info-text">（<ruby>言語<rt>げんご</rt></ruby>チェンジはポケモンのタイプ<ruby>変更<rt>へんこう</rt>
+                            </ruby>みたいで<ruby>楽<rt>たの</rt></ruby>しいぃ～(◠‿◠✿)） </span></li>
             </ul>
         </div>
     </div>
@@ -77,8 +111,11 @@
         <div class="glass-container-apple">
             <h3 class="section-title">🌈 ACGN <ruby>原子<rt>げんし</rt></ruby><ruby>構成<rt>こうせい</rt></ruby></h3>
             <ul>
-                <li><span class="info-text"><ruby>確認<rt>かくにん</rt></ruby>ぷり！アニメ・マンガ・ゲーム・<ruby>小説<rt>しょうせつ</rt></ruby>が </span></li>
-                <li><span class="info-text"><ruby>私<rt>わたし</rt></ruby>の<ruby>宇宙<rt>うちゅう</rt></ruby>を<ruby>形作<rt>かたちづく</rt></ruby>る</span><strong class="highlight"><ruby>素粒子<rt>そりゅうし</rt></ruby></strong><span class="info-text">なの～ ★~(◠‿◕✿) </span></li>
+                <li><span class="info-text"><ruby>確認<rt>かくにん</rt></ruby>ぷり！アニメ・マンガ・ゲーム・<ruby>小説<rt>しょうせつ</rt></ruby>が
+                    </span></li>
+                <li><span class="info-text"><ruby>私<rt>わたし</rt></ruby>の<ruby>宇宙<rt>うちゅう</rt></ruby>を<ruby>形作<rt>かたちづく
+                            </rt></ruby>る</span><strong class="highlight"><ruby>素粒子<rt>そりゅうし</rt></ruby></strong><span
+                        class="info-text">なの～ ★~(◠‿◕✿) </span></li>
             </ul>
         </div>
     </div>
@@ -87,11 +124,29 @@
         <div class="glass-container-apple">
             <h3 class="section-title">💖 <ruby>心<rt>こころ</rt></ruby>のパズル (INFJ-T <ruby>限定<rt>げんてい</rt></ruby>ver.)</h3>
             <ul>
-                <li><span class="info-text">  </span><span class="highlight"><ruby>充電<rt>じゅうでん</rt></ruby>モード： </span><span class="info-text">83％ひとりんぼタイム<ruby>必須<rt>ひっす</rt></ruby></span><strong style="color: #ffeebf;">（お<ruby>布団<rt>ふとん</rt></ruby>で<ruby>本<rt>ほん</rt></ruby><ruby>読<rt>よ</rt></ruby>むのが<ruby>至福<rt>しふく</rt></ruby>ぅ～(｡&gt;ㅅ&lt;｡)）</strong><strong style="color: #f6d67a;"> </strong></li>
-                <li><span class="info-text">  </span><span class="highlight"><ruby>脳内<rt>のうない</rt></ruby><ruby>劇場<rt>げきじょう</rt></ruby>：</span><span class="info-text"> 74％<ruby>暴走<rt>ぼうそう</rt></ruby><ruby>幻想<rt>げんそう</rt></ruby>中</span><strong style="color: #ffeebf;">（<ruby>異世界<rt>いせかい</rt></ruby>への<ruby>扉<rt>とびら</rt></ruby>は<ruby>常時<rt>じょうじ</rt></ruby>オープン！🚪✨） </strong></li>
-                <li><span class="info-text">  </span><span class="highlight"><ruby>感情<rt>かんじょう</rt></ruby>アンテナ： </span><span class="info-text">82％<ruby>超高<rt>ちょうこう</rt></ruby><ruby>感度<rt>かんど</rt></ruby></span><strong style="color: #ffeebf;">（<ruby>君<rt>きみ</rt></ruby>の<ruby>小<rt>ちい</rt></ruby>さな<ruby>悲しみ<rt>かなしみ</rt></ruby>、もしかして<ruby>感知<rt>かんち</rt></ruby>しちゃうかも？(｡･ω･｡)） </strong></li>
-                <li><span class="info-text">  </span><span class="highlight"><ruby>行動<rt>こうどう</rt></ruby><ruby>指針<rt>ししん</rt></ruby>：</span><span class="info-text"> 83％<ruby>計画<rt>けいかく</rt></ruby>型にゃん</span><strong style="color: #ffeebf;">（ToDoリスト<ruby>作成<rt>さくせい</rt></ruby>は<ruby>趣味<rt>しゅみ</rt></ruby>です✓） </strong></li>
-                <li><span class="info-text">  </span><span class="highlight"><ruby>お天気<rt>おてんき</rt></ruby>ハート： </span><span class="info-text">82％にわか<ruby>雨<rt>あめ</rt></ruby><ruby>注意報<rt>ちゅういほう</rt></ruby>☁️➡️🌧️ </span><strong style="color: #ffeebf;">（でも<ruby>虹<rt>にじ</rt></ruby>が<ruby>出<rt>で</rt></ruby>たら<ruby>即時<rt>そくじ</rt></ruby><ruby>晴<rt>は</rt></ruby>れます！(๑´ڡ`๑)） </strong></li>
+                <li><span class="info-text"> </span><span class="highlight"><ruby>充電<rt>じゅうでん</rt></ruby>モード：
+                    </span><span class="info-text">83％ひとりんぼタイム<ruby>必須<rt>ひっす</rt></ruby></span><strong
+                        style="color: #ffeebf;">（お<ruby>布団<rt>ふとん</rt></ruby>で<ruby>本<rt>ほん</rt></ruby><ruby>読<rt>よ</rt>
+                            </ruby>むのが<ruby>至福<rt>しふく</rt></ruby>ぅ～(｡&gt;ㅅ&lt;｡)）</strong><strong
+                        style="color: #f6d67a;"> </strong></li>
+                <li><span class="info-text"> </span><span class="highlight"><ruby>脳内<rt>のうない</rt></ruby><ruby>劇場<rt>
+                                げきじょう</rt></ruby>：</span><span class="info-text"> 74％<ruby>暴走<rt>ぼうそう</rt>
+                            </ruby><ruby>幻想<rt>げんそう</rt></ruby>中</span><strong style="color: #ffeebf;">（<ruby>異世界<rt>
+                                いせかい</rt></ruby>への<ruby>扉<rt>とびら</rt></ruby>は<ruby>常時<rt>じょうじ</rt></ruby>オープン！🚪✨）
+                    </strong></li>
+                <li><span class="info-text"> </span><span class="highlight"><ruby>感情<rt>かんじょう</rt></ruby>アンテナ：
+                    </span><span class="info-text">82％<ruby>超高<rt>ちょうこう</rt></ruby><ruby>感度<rt>かんど</rt>
+                            </ruby></span><strong style="color: #ffeebf;">（<ruby>君<rt>きみ</rt></ruby>の<ruby>小<rt>ちい</rt>
+                            </ruby>さな<ruby>悲しみ<rt>かなしみ</rt></ruby>、もしかして<ruby>感知<rt>かんち</rt></ruby>しちゃうかも？(｡･ω･｡)）
+                    </strong></li>
+                <li><span class="info-text"> </span><span class="highlight"><ruby>行動<rt>こうどう</rt></ruby><ruby>指針<rt>ししん
+                            </rt></ruby>：</span><span class="info-text"> 83％<ruby>計画<rt>けいかく</rt>
+                            </ruby>型にゃん</span><strong style="color: #ffeebf;">（ToDoリスト<ruby>作成<rt>さくせい</rt>
+                            </ruby>は<ruby>趣味<rt>しゅみ</rt></ruby>です✓） </strong></li>
+                <li><span class="info-text"> </span><span class="highlight"><ruby>お天気<rt>おてんき</rt></ruby>ハート：
+                    </span><span class="info-text">82％にわか<ruby>雨<rt>あめ</rt></ruby><ruby>注意報<rt>ちゅういほう</rt></ruby>☁️➡️🌧️
+                    </span><strong style="color: #ffeebf;">（でも<ruby>虹<rt>にじ</rt></ruby>が<ruby>出<rt>で</rt>
+                            </ruby>たら<ruby>即時<rt>そくじ</rt></ruby><ruby>晴<rt>は</rt></ruby>れます！(๑´ڡ`๑)） </strong></li>
             </ul>
         </div>
     </div>
@@ -99,7 +154,10 @@
     <div class="section">
         <div class="glass-container-apple">
             <h3 class="section-title">🍀 <ruby>幸運<rt>こううん</rt></ruby>センサー</h3>
-            <p><span class="info-text"><ruby>電波<rt>でんぱ</rt></ruby><ruby>微弱<rt>びじゃく</rt></ruby>…（</span><strong class="highlight"><ruby>四<rt>よっ</rt></ruby>つ<ruby>葉<rt>ば</rt></ruby>のクローバー<ruby>見<rt>み</rt></ruby>つけたら<ruby>一日中<rt>いちにちじゅう</rt></ruby>ルンルン！</strong><span class="info-text">(⁄ ⁄•⁄ω⁄•⁄ ⁄)）</span></p>
+            <p><span class="info-text"><ruby>電波<rt>でんぱ</rt></ruby><ruby>微弱<rt>びじゃく</rt></ruby>…（</span><strong
+                    class="highlight"><ruby>四<rt>よっ</rt></ruby>つ<ruby>葉<rt>ば</rt></ruby>のクローバー<ruby>見<rt>み</rt>
+                        </ruby>つけたら<ruby>一日中<rt>いちにちじゅう</rt></ruby>ルンルン！</strong><span class="info-text">(⁄ ⁄•⁄ω⁄•⁄
+                    ⁄)）</span></p>
         </div>
     </div>
 
@@ -108,52 +166,68 @@
             <h3 class="section-title">🎮 <ruby>ゲーム<rt>げーむ</rt></ruby><ruby>惑星<rt>わくせい</rt></ruby></h3>
             <p><span class="info-text"><ruby>現在<rt>げんざい</rt></ruby></span>
                 <strong class="highlight">「<ruby>原神<rt>げんしん</rt></ruby>」</strong>
-                <span style="display: inline-flex; align-items: center; padding: 4px 8px; background-color: rgba(255, 255, 255, 0.2); backdrop-filter: blur(5px); border-radius: 12px; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); border: 1px solid rgba(255, 255, 255, 0.3); margin: 0 5px;">
+                <span
+                    style="display: inline-flex; align-items: center; padding: 4px 8px; background-color: rgba(255, 255, 255, 0.2); backdrop-filter: blur(5px); border-radius: 12px; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); border: 1px solid rgba(255, 255, 255, 0.3); margin: 0 5px;">
                     <img src="pic/geshin-250910.jpg" alt="原神" style="width: 16px; height: 16px; margin-right: 5px;">
                     <span style="font-size: 12px; color: white; font-weight: 500;">887948106</span>
                 </span>
                 <span class="info-text">と</span>
                 <strong class="highlight">「<ruby>崩壊<rt>ほうかい</rt></ruby>：スターレイル」</strong>
-                <span style="display: inline-flex; align-items: center; padding: 4px 8px; background-color: rgba(255, 255, 255, 0.2); backdrop-filter: blur(5px); border-radius: 12px; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); border: 1px solid rgba(255, 255, 255, 0.3); margin: 0 5px;">
-                    <img src="pic/hksr-250924.jpg" alt="崩壊：スターレイル" style="width: 16px; height: 16px; margin-right: 5px;">
+                <span
+                    style="display: inline-flex; align-items: center; padding: 4px 8px; background-color: rgba(255, 255, 255, 0.2); backdrop-filter: blur(5px); border-radius: 12px; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); border: 1px solid rgba(255, 255, 255, 0.3); margin: 0 5px;">
+                    <img src="pic/hksr-250924.jpg" alt="崩壊：スターレイル"
+                        style="width: 16px; height: 16px; margin-right: 5px;">
                     <span style="font-size: 12px; color: white; font-weight: 500;">800035446</span>
                 </span>
-                <span class="info-text">に<ruby>重力<rt>じゅうりょく</rt></ruby><ruby>捕捉<rt>ほそく</rt></ruby>されてまーす☆ミ(o･ω･)ﾉ </span>
+                <span class="info-text">に<ruby>重力<rt>じゅうりょく</rt></ruby><ruby>捕捉<rt>ほそく</rt></ruby>されてまーす☆ミ(o･ω･)ﾉ
+                </span>
             </p>
         </div>
         <br>
         <div class="glass-container-apple">
             <h3 class="section-title">🔗 SNS</h3>
             <div style="text-align: center; margin-top: 10px;">
-                <a href="https://m.hoyolab.com/#/accountCenter/postList?id=317761459" target="_blank" style="display: inline-block; padding: 8px 16px; background-color: rgba(255, 255, 255, 0.2); backdrop-filter: blur(5px); border-radius: 20px; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); text-align: center; font-size: 14px; color: white; font-weight: 500; text-decoration: none; border: 1px solid rgba(255, 255, 255, 0.3); transition: all 0.3s ease;">
-                    <img src="pic/hyl_icon.jpg" alt="HoYoLAB" style="width: 20px; height: 20px; margin-right: 8px; vertical-align: middle;">
+                <a href="https://m.hoyolab.com/#/accountCenter/postList?id=317761459" target="_blank"
+                    style="display: inline-block; padding: 8px 16px; background-color: rgba(255, 255, 255, 0.2); backdrop-filter: blur(5px); border-radius: 20px; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); text-align: center; font-size: 14px; color: white; font-weight: 500; text-decoration: none; border: 1px solid rgba(255, 255, 255, 0.3); transition: all 0.3s ease;">
+                    <img src="pic/hyl_icon.jpg" alt="HoYoLAB"
+                        style="width: 20px; height: 20px; margin-right: 8px; vertical-align: middle;">
                     HoYoLAB
                 </a>
-                <p class="info-text" style="text-align: center; margin: 10px 0; color: rgba(255, 255, 255, 0.9);"><ruby>X<rt>エックス</rt></ruby>さんのツイートは<ruby>画像<rt>がぞう</rt></ruby><ruby>添付<rt>てんぷ</rt></ruby>が<ruby>最大<rt>さいだい</rt></ruby>4<ruby>枚<rt>まい</rt></ruby>までに<ruby>制限<rt>せいげん</rt></ruby>されているため、<ruby>現在<rt>げんざい</rt></ruby>は<ruby>使用<rt>しよう</rt></ruby>していません～</p>
+                <p class="info-text" style="text-align: center; margin: 10px 0; color: rgba(255, 255, 255, 0.9);">
+                    <ruby>X<rt>エックス</rt></ruby>さんのツイートは<ruby>画像<rt>がぞう</rt></ruby><ruby>添付<rt>てんぷ</rt></ruby>が<ruby>最大
+                        <rt>さいだい</rt></ruby>4<ruby>枚<rt>まい</rt></ruby>までに<ruby>制限<rt>せいげん</rt></ruby>されているため、<ruby>現在
+                        <rt>げんざい</rt></ruby>は<ruby>使用<rt>しよう</rt></ruby>していません～</p>
             </div>
         </div>
         <br>
         <div class="glass-container-apple" style="text-align: center;">
             <p><span class="info-text">よろしくお<ruby>願<rt>ねが</rt></ruby>いしますぅ～ </span></p>
-            <p><span class="info-text">一<ruby>緒<rt>いっしょ</rt></ruby>にぷかぷか<ruby>幸<rt>しあわ</rt></ruby>せ<ruby>宇宙<rt>うちゅう</rt></ruby>を<ruby>共有<rt>きょうゆう</rt></ruby>しましょ！ </span></p>
+            <p><span class="info-text">一<ruby>緒<rt>いっしょ</rt></ruby>にぷかぷか<ruby>幸<rt>しあわ</rt></ruby>せ<ruby>宇宙<rt>うちゅう</rt>
+                        </ruby>を<ruby>共有<rt>きょうゆう</rt></ruby>しましょ！ </span></p>
             <p><span class="info-text">(♡´౪`♡) にゃん♪ </span></p>
         </div>
     </div>
 
-    <div style="text-align: center; padding: 20px 0 10px; font-size: 12px; color: white; opacity: 0.8; text-shadow: 1px 1px 2px rgba(0,0,0,0.5);">
-        <ruby>月<rt>つき</rt></ruby>に<ruby>寄<rt>よ</rt></ruby>りそう<ruby>乙女<rt>おとめ</rt></ruby>の<ruby>作法<rt>さほう</rt></ruby> ルナちょむ
+    <div
+        style="text-align: center; padding: 20px 0 10px; font-size: 12px; color: white; opacity: 0.8; text-shadow: 1px 1px 2px rgba(0,0,0,0.5);">
+        <ruby>月<rt>つき</rt></ruby>に<ruby>寄<rt>よ</rt></ruby>りそう<ruby>乙女<rt>おとめ</rt></ruby>の<ruby>作法<rt>さほう</rt></ruby>
+        ルナちょむ
         <br>
         Pixiv ID | 133337546
     </div>
 
     <div style="position: fixed; bottom: 10px; transform: translateX(-50%); z-index: 1000;">
-        <a href="https://jyskyp4y.forms.app/untitled-form" target="_blank" style="display: inline-block; padding: 8px 16px; background-color: rgba(255, 255, 255, 0.2); backdrop-filter: blur(5px); border-radius: 20px; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); text-align: center; font-size: 14px; color: white; font-weight: 500; text-decoration: none; border: 1px solid rgba(255, 255, 255, 0.3); transition: all 0.3s ease;">
+        <a href="https://jyskyp4y.forms.app/untitled-form" target="_blank"
+            style="display: inline-block; padding: 8px 16px; background-color: rgba(255, 255, 255, 0.2); backdrop-filter: blur(5px); border-radius: 20px; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); text-align: center; font-size: 14px; color: white; font-weight: 500; text-decoration: none; border: 1px solid rgba(255, 255, 255, 0.3); transition: all 0.3s ease;">
             📝
         </a>
     </div>
-    
-    <div style="position: fixed; bottom: 10px; left: 50%; transform: translateX(-50%); padding: 8px 16px; background-color: rgba(255, 255, 255, 0.15); backdrop-filter: blur(5px); border-radius: 20px; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); text-align: center; font-size: 14px; color: #ffcc80; font-weight: 500; z-index: 1000; border: 1px solid rgba(255, 255, 255, 0.2);">
-        ✨ <ruby>2025年<rt>にせんにじゅうごねん</rt></ruby><ruby>10月<rt>じゅうがつ</rt></ruby><ruby>3日<rt>みっか</rt></ruby><ruby>更新<rt>こうしん</rt></ruby> ✨
+
+    <div
+        style="position: fixed; bottom: 10px; left: 50%; transform: translateX(-50%); padding: 8px 16px; background-color: rgba(255, 255, 255, 0.15); backdrop-filter: blur(5px); border-radius: 20px; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); text-align: center; font-size: 14px; color: #ffcc80; font-weight: 500; z-index: 1000; border: 1px solid rgba(255, 255, 255, 0.2);">
+        <a href="https://changelog-viewer.netlify.app/" style="color: #ffcc80; text-decoration: none;">
+            ✨ 2025<ruby>年<rt>ねん</rt></ruby>10<ruby>月<rt>がつ</rt></ruby>9<ruby>日<rt>にち</rt></ruby> | <ruby>更新<rt>こうしん</rt>
+                </ruby><ruby>履歴<rt>りれき</rt></ruby> ✨</a>
     </div>
     <style>
         @media (max-width: 450px) {
@@ -166,7 +240,7 @@
                 font-size: 9px !important;
                 padding: 3px 3px;
             }
-            
+
             div[style*="font-size: 12px"] {
                 font-size: 8px !important;
                 padding: 2px 2px;
@@ -179,4 +253,5 @@
     <script type="module" src="anime/sakura.js"></script>
     <script type="module" src="analytics/analytics.js"></script>
 </body>
+
 </html>
