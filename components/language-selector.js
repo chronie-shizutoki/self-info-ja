@@ -94,7 +94,7 @@ class LanguageSelector {
         popup.style.padding = '20px';
         popup.style.borderRadius = '24px';
         popup.style.background = 'rgba(255, 255, 255, 0.12)';
-        popup.style.backdropFilter = 'blur(10px) saturate(140%)';
+        popup.style.backdropFilter = 'blur(3px) saturate(120%)';
         popup.style.border = '1px solid rgba(255, 255, 255, 0.2)';
         popup.style.boxShadow = '0 8px 32px rgba(0, 0, 0, 0.2)';
         popup.style.zIndex = '1001';

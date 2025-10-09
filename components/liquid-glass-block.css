@@ -10,8 +10,8 @@
     
     /* 1. Background Blur - Core Glass Texture */
     background: rgba(255, 255, 255, 0.08); /* Reduced opacity for enhanced transparency */
-    backdrop-filter: blur(15px) saturate(140%);
-    -webkit-backdrop-filter: blur(15px) saturate(140%);
+    backdrop-filter: blur(3px) saturate(120%);
+    -webkit-backdrop-filter: blur(3px) saturate(120%);
 
     /* 2. Exquisite Borders and Shadows */
     /* Use inset box-shadow to simulate a highlight border, softer than border */
