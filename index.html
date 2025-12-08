@@ -176,17 +176,29 @@
     </div>
 
     <div style="position: fixed; bottom: 10px; transform: translateX(-50%); z-index: 1000;">
-        <a href="https://jyskyp4y.forms.app/untitled-form" target="_blank" style="display: inline-block; padding: 8px 16px; background-color: rgba(255, 255, 255, 0.2); backdrop-filter: blur(3px); border-radius: 20px; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); text-align: center; font-size: 14px; color: white; font-weight: 500; text-decoration: none; border: 1px solid rgba(255, 255, 255, 0.3); transition: all 0.3s ease;">
-            📝
+        <a class="feedback-container" href="https://jyskyp4y.forms.app/untitled-form" target="_blank" style="display: inline-block; padding: 8px 16px; background-color: rgba(255, 255, 255, 0.2); backdrop-filter: blur(3px); border-radius: 20px; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); text-align: center; font-size: 14px; color: white; font-weight: 500; text-decoration: none; border: 1px solid rgba(255, 255, 255, 0.3); transition: all 0.3s ease;">
+            <img src="pic/feedback.svg" alt="feedback" class="icon" style="width: 16px; height: 16px; vertical-align: middle;">
         </a>
     </div>
     
     <div style="position: fixed; bottom: 10px; left: 50%; transform: translateX(-50%); padding: 8px 16px; background-color: rgba(255, 255, 255, 0.15); backdrop-filter: blur(3px); border-radius: 20px; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); text-align: center; font-size: 14px; color: #ffcc80; font-weight: 500; z-index: 1000; border: 1px solid rgba(255, 255, 255, 0.2);">
         <a href="https://changelog-viewer.netlify.app/" style="color: #ffcc80; text-decoration: none;">
-            ✨ 2025年11月10日 | 更新履歴 ✨</a>
+            ✨<img src="pic/update.svg" alt="update" class="icon" style="width: 16px; height: 16px; vertical-align: middle;">
+            12/9 | 🔥0.1k+ |  
+            <img src="pic/changelog.svg" alt="changelog" class="icon" style="width: 16px; height: 16px; vertical-align: middle;">
+            ✨</a>
     </div>
     <style>
         @media (max-width: 450px) {
+            .feedback-container {
+                padding: 3px 12px !important;
+            }
+
+            .icon {
+                width: 9px !important;
+                height: 9px !important;
+            }
+
             div[style*="font-size: 16px"] {
                 font-size: 12px !important;
                 padding: 3px 3px;

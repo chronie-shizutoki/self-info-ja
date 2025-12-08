@@ -36,7 +36,7 @@ class LanguageSelector {
         const button = document.createElement('button');
         button.id = 'language-button';
         button.className = 'language-button';
-        button.innerHTML = '🌐 あ/A';
+        button.innerHTML = '<img src="pic/lang.svg" alt="lang" style="width: 15px; height: 15px;"> あ/A';
         
         // Style the button to match the glass effect theme
         button.style.position = 'fixed';
@@ -45,7 +45,6 @@ class LanguageSelector {
         button.style.padding = '10px 20px';
         button.style.borderRadius = '20px';
         button.style.background = 'rgba(255, 255, 255, 0.15)';
-        button.style.backdropFilter = 'blur(5px)';
         button.style.border = '1px solid rgba(255, 255, 255, 0.3)';
         button.style.color = '#ffffff';
         button.style.fontFamily = 'KleeOne-Regular, system-ui, sans-serif';
@@ -94,7 +93,6 @@ class LanguageSelector {
         popup.style.padding = '20px';
         popup.style.borderRadius = '24px';
         popup.style.background = 'rgba(255, 255, 255, 0.12)';
-        popup.style.backdropFilter = 'blur(3px) saturate(120%)';
         popup.style.border = '1px solid rgba(255, 255, 255, 0.2)';
         popup.style.boxShadow = '0 8px 32px rgba(0, 0, 0, 0.2)';
         popup.style.zIndex = '1001';
