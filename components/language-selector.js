@@ -36,7 +36,7 @@ class LanguageSelector {
         const button = document.createElement('button');
         button.id = 'language-button';
         button.className = 'language-button';
-        button.innerHTML = '<img src="pic/lang.svg" alt="lang" style="width: 15px; height: 15px;"> あ/A';
+        button.innerHTML = '<img src="pic/lang.svg" alt="lang" style="width: 15px; height: 15px;"> 日本語';
         
         // Style the button to match the glass effect theme
         button.style.position = 'fixed';
@@ -90,7 +90,7 @@ class LanguageSelector {
         popup.style.width = '200px';
         popup.style.maxWidth = '90vw';
         popup.style.maxHeight = '80vh'; // Limit height for mobile devices
-        popup.style.padding = '20px';
+        popup.style.padding = '10px';
         popup.style.borderRadius = '24px';
         popup.style.background = 'rgba(255, 255, 255, 0.12)';
         popup.style.border = '1px solid rgba(255, 255, 255, 0.2)';
@@ -101,7 +101,7 @@ class LanguageSelector {
         popup.style.transform = 'translateY(-10px)';
         popup.style.display = 'flex';
         popup.style.flexDirection = 'column';
-        popup.style.gap = '15px';
+        popup.style.gap = '0';
         popup.style.overflowY = 'auto'; // Enable vertical scrolling
         
         // Customize scrollbar for the popup
@@ -109,7 +109,7 @@ class LanguageSelector {
         popup.style.scrollbarColor = 'rgba(255, 255, 255, 0.3) transparent';
         
         // Add languages to the popup
-        this.languages.forEach(lang => {
+        this.languages.forEach((lang, index) => {
             const languageItem = document.createElement('a');
             languageItem.href = lang.link;
             languageItem.target = '_blank';
@@ -117,9 +117,7 @@ class LanguageSelector {
             
             // Style the language item
             languageItem.style.display = 'block';
-            languageItem.style.padding = '12px 15px';
-            languageItem.style.borderRadius = '12px';
-            languageItem.style.background = 'rgba(255, 255, 255, 0.08)';
+            languageItem.style.padding = '8px 12px';
             languageItem.style.color = '#ffffff';
             languageItem.style.textDecoration = 'none';
             languageItem.style.transition = 'all 0.3s ease';
@@ -127,32 +125,37 @@ class LanguageSelector {
             languageItem.style.overflow = 'hidden';
             languageItem.style.textOverflow = 'ellipsis';
             
+            // Add separator line for all items except the first one
+            if (index > 0) {
+                languageItem.style.borderTop = '1px solid rgba(255, 255, 255, 0.15)';
+            }
+            
             // Add hover effect for desktop
             languageItem.addEventListener('mouseenter', () => {
-                languageItem.style.background = 'rgba(255, 255, 255, 0.15)';
-                languageItem.style.transform = 'translateX(5px)';
+                languageItem.style.background = 'rgba(255, 255, 255, 0.08)';
+                languageItem.style.transform = 'translateX(3px)';
             });
             
             languageItem.addEventListener('mouseleave', () => {
-                languageItem.style.background = 'rgba(255, 255, 255, 0.08)';
+                languageItem.style.background = 'transparent';
                 languageItem.style.transform = 'translateX(0)';
             });
             
             // Add touch effect for mobile
             languageItem.addEventListener('touchstart', () => {
-                languageItem.style.background = 'rgba(255, 255, 255, 0.15)';
-                languageItem.style.transform = 'translateX(5px)';
+                languageItem.style.background = 'rgba(255, 255, 255, 0.08)';
+                languageItem.style.transform = 'translateX(3px)';
             });
             
             languageItem.addEventListener('touchend', () => {
-                languageItem.style.background = 'rgba(255, 255, 255, 0.08)';
+                languageItem.style.background = 'transparent';
                 languageItem.style.transform = 'translateX(0)';
             });
             
             // Add language names
             languageItem.innerHTML = `
-                <div style="font-weight: bold; margin-bottom: 4px; font-size: 16px;">${lang.name}</div>
-                <div style="font-size: 14px; opacity: 0.8;">${lang.localName}</div>
+                <div style="font-weight: bold; margin-bottom: 3px; font-size: 15px;">${lang.name}</div>
+                <div style="font-size: 13px; opacity: 0.8;">${lang.localName}</div>
             `;
             
             popup.appendChild(languageItem);
